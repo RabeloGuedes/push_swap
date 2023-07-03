@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 15:11:35 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/03 14:20:59 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/03 14:38:42 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ int	main(int ac, char **av)
 		while ((++av, *av))
 		{
 			if (!int_checker(*av))
-				ft_printf("ops, some intput is not a interger\n");
-			else
-				ft_printf("it seems that everthing is correct\n");
+			{
+				ft_printf("Error\n");
+				break;
+			}
 		}	
 	}
 	return (0);
