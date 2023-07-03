@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_print_int.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/17 12:23:26 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/04/17 12:31:32 by arabelo-         ###   ########.fr       */
+/*   Created: 2023/05/15 20:55:59 by arabelo-          #+#    #+#             */
+/*   Updated: 2023/07/03 12:58:44 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../inc/ft_printf.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+u_int16_t	ft_print_int(int nbr)
 {
-	t_list	*curr;
+	u_int16_t	len;
+	char		*n;
 
-	if (!lst)
-		return ;
-	curr = lst;
-	while (curr)
-	{
-		f(curr->content);
-		curr = curr->next;
-	}
+	n = ft_itoa(nbr);
+	len = ft_print_str(n);
+	free(n);
+	return (len);
 }

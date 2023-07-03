@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_print_address.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/11 22:21:08 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/04/13 15:39:40 by arabelo-         ###   ########.fr       */
+/*   Created: 2023/05/15 21:20:28 by arabelo-          #+#    #+#             */
+/*   Updated: 2023/07/03 12:58:37 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../inc/ft_printf.h"
 
-void	*ft_memset(void *s, int c, size_t n)
+u_int16_t	ft_print_address(u_int64_t address)
 {
-	unsigned char	*t;
+	u_int16_t	len;
 
-	t = (unsigned char *)s;
-	while (n--)
-		*t++ = (unsigned char)c;
-	return (s);
+	len = 0;
+	if (!address)
+		return (ft_print_str("(nil)"));
+	if (address > 15)
+	{
+		len += ft_print_address(address / 16);
+		len += ft_print_char(HEX_TABLE_LOWER[address % 16]);
+	}
+	else
+	{
+		len += ft_print_str("0x");
+		len += ft_print_char(HEX_TABLE_LOWER[address % 16]);
+	}
+	return (len);
 }

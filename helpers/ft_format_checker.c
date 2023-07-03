@@ -6,11 +6,11 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:37:23 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/06/29 11:46:19 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/03 12:58:30 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/ft_printf.h"
+#include "../inc/ft_printf.h"
 
 u_int64_t	ft_format_checker(int c, va_list args)
 {

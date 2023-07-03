@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_print_strchr.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/17 11:40:43 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/04/17 14:21:36 by arabelo-         ###   ########.fr       */
+/*   Created: 2023/05/15 20:45:41 by arabelo-          #+#    #+#             */
+/*   Updated: 2023/07/03 12:58:47 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../inc/ft_printf.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+u_int8_t	ft_print_char(char c)
 {
-	t_list	*prev;
-	t_list	*curr;
+	write(1, &c, 1);
+	return (1);
+}
 
-	if (!*lst)
-		return ;
-	prev = *lst;
-	curr = prev;
-	while (curr->next)
-	{
-		curr = curr->next;
-		del(prev->content);
-		free(prev);
-		prev = curr;
-	}
-	del(curr->content);
-	free(curr);
-	*lst = NULL;
+u_int64_t	ft_print_str(char *s)
+{
+	u_int64_t	len;
+
+	len = 0;
+	if (!s)
+		return (ft_print_str("(null)"));
+	while (s[len])
+		ft_print_char(s[len++]);
+	return (len);
 }
