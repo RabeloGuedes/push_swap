@@ -1,15 +1,15 @@
 NAME = push_swap
 PUSH_SWAP_LIB = lib_$(NAME).a
 PUSH_SWAP_LIB_PATH = -L. -l_$(NAME)
+LIBFT = libft.a
+LIBFT_PATH = ./libft/
 CC = cc
 FLAGS = -Wall -Wextra -Werror
 EXTRA_FLAG = -fsanitize=address
 HELPERS_PATH = helpers/
 INC_FLAG = -I ./inc
 
-HELPERS = 	$(HELPERS_PATH)int_checker.c $(HELPERS_PATH)ft_format_checker.c $(HELPERS_PATH)ft_itoa.c\
-			$(HELPERS_PATH)ft_print_address.c $(HELPERS_PATH)ft_print_hex.c $(HELPERS_PATH)ft_print_int.c\
-			$(HELPERS_PATH)ft_print_strchr.c $(HELPERS_PATH)ft_print_uint.c $(HELPERS_PATH)ft_printf.c
+HELPERS = 	$(HELPERS_PATH)int_checker.c
 
 SOURCES = $(HELPERS)
 
@@ -23,12 +23,17 @@ $(NAME): $(notdir $(OBJS))
 	@$(CC) $(FLAGS) $(INC_FLAG) $(NAME).c -o $(NAME) $(PUSH_SWAP_LIB_PATH)
 
 $(notdir $(OBJS)): $(SOURCES)
+	@make --directory=$(LIBFT_PATH)
+	@cp $(LIBFT_PATH)$(LIBFT) ./
+	@mv $(LIBFT) $(PUSH_SWAP_LIB)
 	@$(CC) -c $(FLAGS) $(INC_FLAG) $(SOURCES)
 
 clean:
+	@make clean --directory=$(LIBFT_PATH)
 	@rm -f $(notdir $(OBJS))
 
 fclean: clean
+	@make fclean --directory=$(LIBFT_PATH)
 	@rm -f $(PUSH_SWAP_LIB) $(NAME)
 
 re: fclean all
