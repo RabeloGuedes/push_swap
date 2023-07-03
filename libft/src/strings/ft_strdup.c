@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/27 15:11:35 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/03 14:38:42 by arabelo-         ###   ########.fr       */
+/*   Created: 2023/04/11 19:59:39 by arabelo-          #+#    #+#             */
+/*   Updated: 2023/07/03 13:19:37 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/push_swap.h"
+#include "../../inc/libft.h"
 
-int	main(int ac, char **av)
+char	*ft_strdup(const char *str)
 {
-	if (ac > 1)
-	{
-		while ((++av, *av))
-		{
-			if (!int_checker(*av))
-			{
-				ft_printf("Error\n");
-				break;
-			}
-		}	
-	}
-	return (0);
+	char	*copy;
+	size_t	str_len;
+
+	str_len = ft_strlen(str);
+	copy = (char *)malloc(sizeof(*str) * str_len + 1);
+	if (!copy)
+		return (NULL);
+	while (*str)
+		*copy++ = *str++;
+	*copy = '\0';
+	return (copy - str_len);
 }

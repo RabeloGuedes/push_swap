@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/27 15:11:35 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/03 14:38:42 by arabelo-         ###   ########.fr       */
+/*   Created: 2023/04/12 15:36:14 by arabelo-          #+#    #+#             */
+/*   Updated: 2023/07/03 13:19:37 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/push_swap.h"
+#include "../../inc/libft.h"
 
-int	main(int ac, char **av)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	if (ac > 1)
+	int				i;
+	unsigned char	*dest_uc;
+	unsigned char	*src_uc;
+
+	dest_uc = (unsigned char *)dest;
+	src_uc = (unsigned char *)src;
+	i = n - 1;
+	if (src < dest)
 	{
-		while ((++av, *av))
+		while (i >= 0)
 		{
-			if (!int_checker(*av))
-			{
-				ft_printf("Error\n");
-				break;
-			}
-		}	
+			dest_uc[i] = src_uc[i];
+			i--;
+		}
 	}
-	return (0);
+	else
+		ft_memcpy(dest, src, n);
+	return (dest);
 }

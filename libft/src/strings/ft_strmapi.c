@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_address.c                                 :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/15 21:20:28 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/03 12:58:37 by arabelo-         ###   ########.fr       */
+/*   Created: 2023/04/15 20:37:44 by arabelo-          #+#    #+#             */
+/*   Updated: 2023/07/03 13:19:37 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_printf.h"
+#include "../../inc/libft.h"
 
-u_int16_t	ft_print_address(u_int64_t address)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	u_int16_t	len;
+	char			*ptr;
+	unsigned int	i;
+	size_t			len;
 
-	len = 0;
-	if (!address)
-		return (ft_print_str("(nil)"));
-	if (address > 15)
+	if (!s || !f)
+		return (NULL);
+	i = 0;
+	len = ft_strlen(s);
+	ptr = (char *)malloc(sizeof(*s) * len + 1);
+	if (!ptr)
+		return (ptr);
+	while (s[i])
 	{
-		len += ft_print_address(address / 16);
-		len += ft_print_char(HEX_TABLE_LOWER[address % 16]);
+		ptr[i] = f(i, (char)s[i]);
+		i++;
 	}
-	else
-	{
-		len += ft_print_str("0x");
-		len += ft_print_char(HEX_TABLE_LOWER[address % 16]);
-	}
-	return (len);
+	ptr[i] = '\0';
+	return (ptr);
 }

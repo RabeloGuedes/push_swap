@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/27 15:11:35 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/03 14:38:42 by arabelo-         ###   ########.fr       */
+/*   Created: 2023/04/15 21:30:27 by arabelo-          #+#    #+#             */
+/*   Updated: 2023/07/03 13:19:37 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/push_swap.h"
+#include "../../inc/libft.h"
 
-int	main(int ac, char **av)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	if (ac > 1)
+	unsigned int	i;
+
+	if (!s || !f)
+		return ;
+	i = 0;
+	while (s[i])
 	{
-		while ((++av, *av))
-		{
-			if (!int_checker(*av))
-			{
-				ft_printf("Error\n");
-				break;
-			}
-		}	
+		f(i, &s[i]);
+		i++;
 	}
-	return (0);
 }

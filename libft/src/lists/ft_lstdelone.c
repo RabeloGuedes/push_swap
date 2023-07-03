@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/21 17:15:04 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/03 12:58:54 by arabelo-         ###   ########.fr       */
+/*   Created: 2023/04/17 11:18:55 by arabelo-          #+#    #+#             */
+/*   Updated: 2023/07/03 13:19:37 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_printf.h"
+#include "../../inc/libft.h"
 
-int	ft_printf(const char *s, ...)
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	va_list		args;
-	size_t		i;
-	u_int64_t	len;
-
-	va_start(args, s);
-	i = 0;
-	len = 0;
-	while (s[i])
-	{
-		if (s[i] == '%')
-			len += ft_format_checker(s[++i], args);
-		else
-			len += ft_print_char(s[i]);
-		i++;
-	}
-	va_end(args);
-	return (len);
+	if (!lst)
+		return ;
+	del(lst->content);
+	free(lst);
 }

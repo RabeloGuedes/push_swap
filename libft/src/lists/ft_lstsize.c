@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/27 15:11:35 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/03 14:38:42 by arabelo-         ###   ########.fr       */
+/*   Created: 2023/04/16 23:26:27 by arabelo-          #+#    #+#             */
+/*   Updated: 2023/07/03 13:19:37 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/push_swap.h"
+#include "../../inc/libft.h"
 
-int	main(int ac, char **av)
+int	ft_lstsize(t_list *lst)
 {
-	if (ac > 1)
+	int		size;
+	t_list	*curr;
+
+	size = 0;
+	curr = lst;
+	while (curr)
 	{
-		while ((++av, *av))
-		{
-			if (!int_checker(*av))
-			{
-				ft_printf("Error\n");
-				break;
-			}
-		}	
+		size++;
+		curr = curr->next;
 	}
-	return (0);
+	return (size);
 }

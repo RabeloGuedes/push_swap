@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_int.c                                     :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/15 20:55:59 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/03 12:58:44 by arabelo-         ###   ########.fr       */
+/*   Created: 2023/04/11 20:52:54 by arabelo-          #+#    #+#             */
+/*   Updated: 2023/07/03 13:19:37 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_printf.h"
+#include "../../inc/libft.h"
 
-u_int16_t	ft_print_int(int nbr)
+char	*ft_strrchr(const char *s, int c)
 {
-	u_int16_t	len;
-	char		*n;
+	size_t	s_len;
 
-	n = ft_itoa(nbr);
-	len = ft_print_str(n);
-	free(n);
-	return (len);
+	s_len = ft_strlen(s);
+	while (s_len && *(s + s_len) != (char)c)
+		s_len--;
+	if (*(s + s_len) == (char)c)
+		return ((char *)(s + s_len));
+	return (NULL);
 }

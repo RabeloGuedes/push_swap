@@ -6,11 +6,11 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 21:00:11 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/03 12:58:51 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/06/29 11:49:42 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_printf.h"
+#include "../../inc/ft_printf.h"
 
 u_int16_t	uint_len(u_int32_t nbr)
 {

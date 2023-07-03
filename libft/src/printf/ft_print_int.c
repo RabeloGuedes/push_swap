@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_print_int.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/27 15:11:35 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/03 14:38:42 by arabelo-         ###   ########.fr       */
+/*   Created: 2023/05/15 20:55:59 by arabelo-          #+#    #+#             */
+/*   Updated: 2023/06/29 11:48:16 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/push_swap.h"
+#include "../../inc/ft_printf.h"
 
-int	main(int ac, char **av)
+u_int16_t	ft_print_int(int nbr)
 {
-	if (ac > 1)
-	{
-		while ((++av, *av))
-		{
-			if (!int_checker(*av))
-			{
-				ft_printf("Error\n");
-				break;
-			}
-		}	
-	}
-	return (0);
+	u_int16_t	len;
+	char		*n;
+
+	n = ft_itoa(nbr);
+	len = ft_print_str(n);
+	free(n);
+	return (len);
 }

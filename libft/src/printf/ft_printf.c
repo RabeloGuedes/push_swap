@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/27 15:11:35 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/03 14:38:42 by arabelo-         ###   ########.fr       */
+/*   Created: 2023/04/21 17:15:04 by arabelo-          #+#    #+#             */
+/*   Updated: 2023/06/29 11:47:10 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/push_swap.h"
+#include "../../inc/ft_printf.h"
 
-int	main(int ac, char **av)
+int	ft_printf(const char *s, ...)
 {
-	if (ac > 1)
+	va_list		args;
+	size_t		i;
+	u_int64_t	len;
+
+	va_start(args, s);
+	i = 0;
+	len = 0;
+	while (s[i])
 	{
-		while ((++av, *av))
-		{
-			if (!int_checker(*av))
-			{
-				ft_printf("Error\n");
-				break;
-			}
-		}	
+		if (s[i] == '%')
+			len += ft_format_checker(s[++i], args);
+		else
+			len += ft_print_char(s[i]);
+		i++;
 	}
-	return (0);
+	va_end(args);
+	return (len);
 }

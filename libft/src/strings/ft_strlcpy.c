@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_strchr.c                                  :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/15 20:45:41 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/03 12:58:47 by arabelo-         ###   ########.fr       */
+/*   Created: 2023/04/08 21:55:46 by arabelo-          #+#    #+#             */
+/*   Updated: 2023/07/03 13:19:37 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_printf.h"
+#include "../../inc/libft.h"
 
-u_int8_t	ft_print_char(char c)
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
-	write(1, &c, 1);
-	return (1);
-}
+	size_t	src_len;
+	size_t	copy_len;
 
-u_int64_t	ft_print_str(char *s)
-{
-	u_int64_t	len;
-
-	len = 0;
-	if (!s)
-		return (ft_print_str("(null)"));
-	while (s[len])
-		ft_print_char(s[len++]);
-	return (len);
+	src_len = ft_strlen(src);
+	copy_len = 0;
+	if (size == 0)
+		return (src_len);
+	if (size > 0)
+		copy_len = size - 1;
+	if (src_len < copy_len)
+		copy_len = src_len;
+	ft_memcpy(dest, src, copy_len);
+	dest[copy_len] = '\0';
+	return (src_len);
 }
