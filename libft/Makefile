@@ -21,9 +21,9 @@ STRINGS =	$(STRINGS_PATH)ft_putendl_fd.c $(STRINGS_PATH)ft_putnbr_fd.c\
 
 CHAR =		$(CHAR_PATH)ft_isalnum.c $(CHAR_PATH)ft_isalpha.c $(CHAR_PATH)ft_isascii.c\
 			$(CHAR_PATH)ft_isdigit.c $(CHAR_PATH)ft_isprint.c $(CHAR_PATH)ft_putchar_fd.c\
-			$(CHAR_PATH)ft_tolower.c $(CHAR_PATH)ft_toupper.c
+			$(CHAR_PATH)ft_tolower.c $(CHAR_PATH)ft_toupper.c $(CHAR_PATH)ft_isspace.c
 
-CONVERTER = $(CONVERTER_PATH)ft_atoi.c $(CONVERTER_PATH)ft_itoa.c
+CONVERTER = $(CONVERTER_PATH)ft_atoi.c $(CONVERTER_PATH)ft_itoa.c $(CONVERTER_PATH)ft_atoll.c
 
 LISTS =		$(LISTS_PATH)ft_lstadd_back.c $(LISTS_PATH)ft_lstadd_front.c\
 			$(LISTS_PATH)ft_lstclear.c $(LISTS_PATH)ft_lstdelone.c $(LISTS_PATH)ft_lstiter.c\
