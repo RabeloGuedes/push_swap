@@ -8,13 +8,30 @@ FLAGS = -Wall -Wextra -Werror
 SANITIZE_FLAG = -fsanitize=address
 DEBUG_FLAGS = -g $(SANITIZE_FLAG)
 SRC_PATH = src/
+TEST_PATH = test/
 HELPERS_PATH = helpers/
 INC_FLAG = -I ./inc
 
-HELPERS =	$(HELPERS_PATH)int_checker.c $(HELPERS_PATH)args_checker.c
+HELPERS =	$(HELPERS_PATH)int_checker.c $(HELPERS_PATH)args_checker.c\
+			$(HELPERS_PATH)args_to_linked_list.c
 
 OBJS = $(HELPERS:.c=.o)
 
+
+# Test Section
+
+STR_ARGS = "2 0 1"
+DUPLICANTES_ARGS = 2 0 1 2
+ARG_A = "2 0 1"
+ARG_B = "3 8 4"
+DOUBLE_STR = $(ARG_A) $(ARG_B)
+NOT_INT_ARGS = 2 1 one 3
+TYPO_ARGS = 0 4 -2 3-
+NEGATIVES_ARGS = -2 -7 -3 -1 -5
+POSITVES_ARGS = 5 7 1 8 3
+GOOD_MIX_ARGS = $(POSITVES_ARGS) $(NEGATIVES_ARGS)
+
+# Test Section
 
 all: $(NAME)
 
@@ -30,7 +47,7 @@ $(notdir $(OBJS)): $(HELPERS)
 
 clean:
 	@make clean --directory=$(LIBFT_PATH)
-	@rm -f $(notdir $(OBJS))
+	@rm -f $(notdir $(OBJS)) tester
 
 fclean: clean
 	@make fclean --directory=$(LIBFT_PATH)
@@ -39,5 +56,40 @@ fclean: clean
 debug: $(notdir $(OBJS))
 	@ar rc $(PUSH_SWAP_LIB) $(notdir $(OBJS))
 	@$(CC) $(FLAGS) $(DEBUG_FLAGS) $(INC_FLAG) $(SRC_PATH)$(NAME).c -o $(NAME) $(PUSH_SWAP_LIB_PATH)
+
+test: $(notdir $(OBJS))
+	@ar rc $(PUSH_SWAP_LIB) $(notdir $(OBJS))
+	@$(CC) $(FLAGS) $(DEBUG_FLAGS) $(INC_FLAG) $(TEST_PATH)tester.c -o tester $(PUSH_SWAP_LIB_PATH)
+	@echo "input: \"$(STR_ARGS)\", expected: Error"
+	@sleep 2
+	@./tester $(STR_ARGS)
+	@sleep 1
+	@echo "input: $(DUPLICANTES_ARGS), expected: Error"
+	@sleep 2
+	@./tester $(DUPLICANTES_ARGS)
+	@sleep 1
+	@echo "input: \"$(ARG_A)\" \"$(ARG_B)\", expected: Error"
+	@sleep 2
+	@./tester $(DOUBLE_STR)
+	@sleep 1
+	@echo "input: $(NOT_INT_ARGS), expected: Error"
+	@sleep 2
+	@./tester $(NOT_INT_ARGS)
+	@sleep 1
+	@echo "input: $(TYPO_ARGS), expected: Error"
+	@sleep 2
+	@./tester $(TYPO_ARGS)
+	@sleep 1
+	@echo "input: $(NEGATIVES_ARGS), expected: OK"
+	@sleep 2
+	@./tester $(NEGATIVES_ARGS)
+	@sleep 1
+	@echo "input: $(POSITVES_ARGS), expected: OK"
+	@sleep 2
+	@./tester $(POSITVES_ARGS)
+	@sleep 1
+	@echo "input: $(GOOD_MIX_ARGS), expected: OK"
+	@sleep 2
+	@./tester $(GOOD_MIX_ARGS)
 
 re: fclean all
