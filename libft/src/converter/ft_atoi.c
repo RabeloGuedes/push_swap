@@ -6,17 +6,11 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 21:29:20 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/03 13:19:37 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/04 14:33:45 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/libft.h"
-#include <stdio.h>
-
-static int	ft_isspace(int c)
-{
-	return ((c >= '\t' && c <= '\r') || c == ' ');
-}
 
 int	ft_atoi(const char *str)
 {
