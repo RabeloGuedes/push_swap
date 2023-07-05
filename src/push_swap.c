@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 15:11:35 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/05 13:00:07 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/05 14:49:30 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,14 @@ int	main(int ac, char **av)
 			if (!int_checker(*av))
 			{
 				ft_printf("Error\n");
-				break;
+				break ;
 			}
-		}	
+			else if (!duplicates_checker(av))
+			{
+				ft_printf("Error\n");
+				break ;
+			}
+		}
 	}
 	return (0);
 }

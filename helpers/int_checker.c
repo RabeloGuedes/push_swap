@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 20:31:28 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/04 16:21:58 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/05 13:52:46 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ int	int_checker(const char *str)
 	}
 	while (*str)
 	{
-		if (!ft_isdigit(*str) && !ft_isspace(*str) && *str != '\0' && *str != '-')
+		if (!ft_isdigit(*str) && !ft_isspace(*str)
+			&& *str != '\0' && *str != '-')
 			return (0);
 		str++;
 	}

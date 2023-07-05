@@ -11,7 +11,7 @@ SRC_PATH = src/
 HELPERS_PATH = helpers/
 INC_FLAG = -I ./inc
 
-HELPERS = $(HELPERS_PATH)int_checker.c
+HELPERS =	$(HELPERS_PATH)int_checker.c $(HELPERS_PATH)duplicates_checker.c
 
 OBJS = $(HELPERS:.c=.o)
 
@@ -38,6 +38,6 @@ fclean: clean
 
 debug: $(notdir $(OBJS))
 	@ar rc $(PUSH_SWAP_LIB) $(notdir $(OBJS))
-	@$(CC) $(FLAGS) $(DEBUG_FLAGS) $(INC_FLAG) $(NAME).c -o $(NAME) $(PUSH_SWAP_LIB_PATH)
+	@$(CC) $(FLAGS) $(DEBUG_FLAGS) $(INC_FLAG) $(SRC_PATH)$(NAME).c -o $(NAME) $(PUSH_SWAP_LIB_PATH)
 
 re: fclean all
