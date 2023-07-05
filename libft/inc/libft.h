@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 00:38:40 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/04 14:39:14 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/04 14:51:20 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,14 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+
+# ifndef INT32_MAX
+#  define INT32_MAX 2147483647
+# endif
+
+# ifndef INT32_MIN
+#  define INT32_MIN -2147483648
+# endif
 
 // part 1
 

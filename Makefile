@@ -5,7 +5,8 @@ LIBFT = libft.a
 LIBFT_PATH = ./libft/
 CC = cc
 FLAGS = -Wall -Wextra -Werror
-EXTRA_FLAG = -fsanitize=address
+SANITIZE_FLAG = -fsanitize=address
+DEBUG_FLAGS = -g $(SANITIZE_FLAG)
 HELPERS_PATH = helpers/
 INC_FLAG = -I ./inc
 
@@ -34,6 +35,10 @@ clean:
 
 fclean: clean
 	@make fclean --directory=$(LIBFT_PATH)
-	@rm -f $(PUSH_SWAP_LIB) $(NAME)
+	@rm -rf $(PUSH_SWAP_LIB) $(NAME) $(NAME).dSYM
+
+debug: $(notdir $(OBJS))
+	@ar rc $(PUSH_SWAP_LIB) $(notdir $(OBJS))
+	@$(CC) $(FLAGS) $(DEBUG_FLAGS) $(INC_FLAG) $(NAME).c -o $(NAME) $(PUSH_SWAP_LIB_PATH)
 
 re: fclean all
