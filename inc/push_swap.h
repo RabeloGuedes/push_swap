@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 20:32:58 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/05 16:46:48 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/05 17:15:49 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,22 @@ int	duplicates_checker(char **args);
 int	args_checker(char **args);
 
 // helpers
+
+// nodes
+
+typedef struct	t_point
+{
+	int				data;
+	struct t_point *next;
+	struct t_point *prev;
+	int				is_first;
+	int				is_last;
+}				Node;
+
+Node	*create_nodes(size_t nodes_amount);
+void	fill_nodes(Node *head, char **args);
+Node	*args_to_linked_list(char **args, size_t nodes_amount);
+
+// nodes
 
 #endif

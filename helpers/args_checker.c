@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 15:17:16 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/05 16:40:17 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/05 17:18:29 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	args_checker(char **args)
 {
 	int	i;
 
-	i = 1;
+	i = 0;
 	
 	while (args[i])
 	{
@@ -27,7 +27,7 @@ int	args_checker(char **args)
 		}
 		i++;
 	}
-	if (!duplicates_checker(++args))
+	if (!duplicates_checker(args))
 	{
 		ft_printf("Error\n");
 		return (0);
