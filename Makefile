@@ -11,7 +11,7 @@ SRC_PATH = src/
 HELPERS_PATH = helpers/
 INC_FLAG = -I ./inc
 
-HELPERS =	$(HELPERS_PATH)int_checker.c $(HELPERS_PATH)duplicates_checker.c
+HELPERS =	$(HELPERS_PATH)int_checker.c $(HELPERS_PATH)args_checker.c
 
 OBJS = $(HELPERS:.c=.o)
 

@@ -1,23 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   args_checker.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/27 15:11:35 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/05 16:42:39 by arabelo-         ###   ########.fr       */
+/*   Created: 2023/07/05 15:17:16 by arabelo-          #+#    #+#             */
+/*   Updated: 2023/07/05 16:40:17 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-int	main(int ac, char **av)
+int	args_checker(char **args)
 {
-	if (ac > 1)
+	int	i;
+
+	i = 1;
+	
+	while (args[i])
 	{
-		if (!args_checker(av))
+		if (!are_arg_num(args[i]) || !a_is_int_range(args[i]))
+		{
+			ft_printf("Error\n");
 			return (0);
+		}
+		i++;
 	}
-	return (0);
+	if (!duplicates_checker(++args))
+	{
+		ft_printf("Error\n");
+		return (0);
+	}
+	return (1);
 }
