@@ -7,27 +7,26 @@ CC = cc
 FLAGS = -Wall -Wextra -Werror
 SANITIZE_FLAG = -fsanitize=address
 DEBUG_FLAGS = -g $(SANITIZE_FLAG)
+SRC_PATH = src/
 HELPERS_PATH = helpers/
 INC_FLAG = -I ./inc
 
-HELPERS = 	$(HELPERS_PATH)int_checker.c
+HELPERS = $(HELPERS_PATH)int_checker.c
 
-SOURCES = $(HELPERS)
-
-OBJS = $(SOURCES:.c=.o)
+OBJS = $(HELPERS:.c=.o)
 
 
 all: $(NAME)
 
 $(NAME): $(notdir $(OBJS))
 	@ar rc $(PUSH_SWAP_LIB) $(notdir $(OBJS))
-	@$(CC) $(FLAGS) $(INC_FLAG) $(NAME).c -o $(NAME) $(PUSH_SWAP_LIB_PATH)
+	@$(CC) $(FLAGS) $(INC_FLAG) $(SRC_PATH)$(NAME).c -o $(NAME) $(PUSH_SWAP_LIB_PATH)
 
-$(notdir $(OBJS)): $(SOURCES)
+$(notdir $(OBJS)): $(HELPERS)
 	@make --directory=$(LIBFT_PATH)
 	@cp $(LIBFT_PATH)$(LIBFT) ./
 	@mv $(LIBFT) $(PUSH_SWAP_LIB)
-	@$(CC) -c $(FLAGS) $(INC_FLAG) $(SOURCES)
+	@$(CC) -c $(FLAGS) $(INC_FLAG) $(HELPERS)
 
 clean:
 	@make clean --directory=$(LIBFT_PATH)
