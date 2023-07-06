@@ -6,19 +6,21 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 07:51:42 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/06 09:37:36 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/06 12:56:18 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
-void	swap(t_node *head)
+void	swap(t_stack *stack)
 {
 	int	temp;
+	t_node	*head;
 
-	if (!head)
+	head = *(stack->head);
+	if (!stack)
 		return ;
-	if (head->next)
+	if (head && head->next)
 	{
 		temp = head->data;
 		head->data = head->next->data;
@@ -26,18 +28,18 @@ void	swap(t_node *head)
 	}
 }
 
-void	sa(t_node *head_a)
+void	sa(t_stack *stack_a)
 {
-	swap(head_a);
+	swap(stack_a);
 }
 
-void	sb(t_node *head_b)
+void	sb(t_stack *stack_b)
 {
-	swap(head_b);
+	swap(stack_b);
 }
 
-void	ss(t_node *head_a, t_node *head_b)
+void	ss(t_stack *stack_a, t_stack *stack_b)
 {
-	sa(head_a);
-	sb(head_b);
+	sa(stack_a);
+	sb(stack_b);
 }

@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 20:32:58 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/06 10:01:25 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/06 13:05:20 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,23 @@
 # define PUSH_SWAP_H
 
 # include "../libft/inc/ft_printf.h"
+
+// structs
+
+typedef struct s_point
+{
+	int				data;
+	struct s_point	*next;
+	struct s_point	*prev;
+}				t_node;
+
+typedef struct s_stack
+{
+	t_node	**head;
+	t_node	**tail;
+}				t_stack;
+
+// structs
 
 // helpers
 
@@ -26,27 +43,22 @@ int		args_checker(char **args);
 
 // nodes
 
-typedef struct s_point
-{
-	int				data;
-	struct s_point	*next;
-	struct s_point	*prev;
-}				t_node;
-
 int		bind_nodes(t_node *prev_node, t_node *new_node);
 t_node	*create_node(void);
-t_node	*create_nodes(size_t nodes_amount);
+t_node	*create_nodes(size_t nodes_amount, t_stack *stack);
 void	fill_nodes(t_node *head, char **args);
-t_node	*args_to_linked_list(char **args, size_t nodes_amount);
+void	args_to_linked_list(char **args, size_t nodes_amount, t_stack *stack);
 
 // nodes
 
 // movements
 
-void	swap(t_node *head);
-void	sa(t_node *head_a);
-void	sb(t_node *head_b);
-void	ss(t_node *head_a, t_node *head_b);
+void	swap(t_stack *stack);
+void	sa(t_stack *stack_a);
+void	sb(t_stack *stack_a);
+void	ss(t_stack *stack_a, t_stack *stack_b);
+void	push(t_node *dest_top, t_node *origin_top);
+void	pa(t_node *head_a, t_node *head_b);
 
 // movements
 

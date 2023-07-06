@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 17:58:07 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/06 10:08:24 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/06 10:56:53 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,33 @@ void	display_swap(t_node	*head)
 	display_nodes(head);
 }
 
+void	display_push(t_node *head_a, t_node *head_b)
+{
+	ft_printf("Before Push A:\n");
+	display_nodes(head_a);
+	ft_printf("Before Push B:\n");
+	display_nodes(head_b);
+	pa(head_a, head_b);
+	ft_printf("After Push A:\n");
+	display_nodes(head_a);
+	ft_printf("After Push B:\n");
+	display_nodes(head_b);
+}
+
+void	test_push(char **args, size_t nodes_amount)
+{
+	t_node	*head_a;
+	t_node	*head_b;
+
+	head_a = args_to_linked_list(nodes_amount, args);
+	head_b = args_to_linked_list(nodes_amount, args);
+	if (!head_a || !head_b)
+			return ;
+	display_push(head_a, head_b);
+	free_nodes(head_a);
+	free_nodes(head_b);
+}
+
 int	main(int ac, char **av)
 {
 	t_node	*head;
@@ -72,6 +99,7 @@ int	main(int ac, char **av)
 			return (0);
 		display_nodes(head);
 		display_swap(head);
+		test_push(av, ac - 1);
 	}
 	return (0);
 }
