@@ -6,13 +6,13 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 17:58:07 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/06 10:56:53 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/06 20:07:01 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-void	display_node_infos(t_node *node)
+void	display_node_infos(t_list *node)
 {
 	ft_printf("	{\n		data: %i,\n", node->data);
 	ft_printf("		next: %p,\n", node->next);
@@ -21,9 +21,9 @@ void	display_node_infos(t_node *node)
 	ft_printf("	},\n");
 }
 
-void	free_nodes(t_node *head)
+void	free_nodes(t_list *head)
 {
-	t_node	*curr;
+	t_list	*curr;
 
 	curr = head;
 	while (curr)
@@ -34,9 +34,9 @@ void	free_nodes(t_node *head)
 	}
 }
 
-void	display_nodes(t_node *head)
+void	display_nodes(t_list *head)
 {
-	t_node	*curr;
+	t_list	*curr;
 
 	curr = head;
 	ft_printf("[\n");
@@ -50,7 +50,7 @@ void	display_nodes(t_node *head)
 	ft_printf("]\n");
 }
 
-void	display_swap(t_node	*head)
+void	display_swap(t_list	*head)
 {
 	ft_printf("Before Swap A:\n");
 	display_nodes(head);
@@ -59,7 +59,7 @@ void	display_swap(t_node	*head)
 	display_nodes(head);
 }
 
-void	display_push(t_node *head_a, t_node *head_b)
+void	display_push(t_list *head_a, t_list *head_b)
 {
 	ft_printf("Before Push A:\n");
 	display_nodes(head_a);
@@ -74,8 +74,8 @@ void	display_push(t_node *head_a, t_node *head_b)
 
 void	test_push(char **args, size_t nodes_amount)
 {
-	t_node	*head_a;
-	t_node	*head_b;
+	t_list	*head_a;
+	t_list	*head_b;
 
 	head_a = args_to_linked_list(nodes_amount, args);
 	head_b = args_to_linked_list(nodes_amount, args);
@@ -88,7 +88,7 @@ void	test_push(char **args, size_t nodes_amount)
 
 int	main(int ac, char **av)
 {
-	t_node	*head;
+	t_list	*head;
 
 	if (ac > 1)
 	{

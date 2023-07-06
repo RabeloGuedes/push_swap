@@ -6,67 +6,40 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 15:26:28 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/06 13:15:56 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/06 21:00:06 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
-int	bind_nodes(t_node *prev_node, t_node *new_node)
+t_list	*create_node(int data)
 {
-	if (!prev_node || !new_node || prev_node == new_node)
-		return (0);
-	prev_node->next = new_node;
-	new_node->prev = prev_node;
-	return (1);
-}
+	t_list	*new_node;
+	int		*ptr_data;
 
-t_node	*create_node(void)
-{
-	t_node	*new_node;
-
-	new_node = (t_node *)malloc(sizeof(t_node));
-	if (!new_node)
+	new_node = (t_list *)malloc(sizeof(t_list));
+	ptr_data = (int *)malloc(sizeof(int));
+	if (!new_node || !ptr_data)
 		return (NULL);
+	new_node->next = NULL;
+	*ptr_data = data;
+	new_node->content = ptr_data;
 	return (new_node);
 }
 
-t_node	*create_nodes(size_t nodes_amount, t_stack *stack)
+t_list	*create_nodes(char **args)
 {
-	t_node	*head;
-	t_node	*curr;
+	t_list	*curr;
+	t_list	*ref;
 
-	head = create_node();
-	if (!head)
+	curr = create_node(ft_atoi(*args++));
+	if (!curr)
 		return (NULL);
-	curr = head;
-	stack->head = &head;
-	ft_printf("Hello\n");
-	while (--nodes_amount)
-	{
-		if (!bind_nodes(curr, create_node()))
-			return (NULL);
-		curr = curr->next;
-	}
-	*stack->tail = curr;
-	return (head);
-}
-
-void	fill_nodes(t_node *head, char **args)
-{
+	ref = curr;
 	while (*args)
 	{
-		head->data = ft_atoi(*args++);
-		head = head->next;
+		curr->next = create_node(ft_atoi(*args++));
+		curr = curr->next;
 	}
-}
-
-void	args_to_linked_list(char **args, size_t nodes_amount, t_stack *stack)
-{
-	t_node	*head;
-
-	head = create_nodes(nodes_amount, stack);
-	if (!head)
-		return ;
-	fill_nodes(head, args);
+	return (ref);
 }
