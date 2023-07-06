@@ -10,16 +10,19 @@ DEBUG_FLAGS = -g $(SANITIZE_FLAG)
 SRC_PATH = src/
 TEST_PATH = test/
 HELPERS_PATH = helpers/
+MOVEMENTS_PATH = movements/
 INC_FLAG = -I ./inc
 
 HELPERS =	$(SRC_PATH)$(HELPERS_PATH)int_checker.c\
 			$(SRC_PATH)$(HELPERS_PATH)args_checker.c\
 			$(SRC_PATH)$(HELPERS_PATH)args_to_linked_list.c
 
-OBJS = $(HELPERS:.c=.o)
+MOVEMENTS = $(SRC_PATH)$(MOVEMENTS_PATH)swap.c
+
+OBJS = $(HELPERS:.c=.o) $(MOVEMENTS:.c=.o)
 
 
-# Test Section
+# Test Variables
 
 STR_ARGS = "2 0 1"
 DUPLICANTES_ARGS = 2 0 1 2
@@ -32,7 +35,7 @@ NEGATIVES_ARGS = -2 -7 -3 -1 -5
 POSITVES_ARGS = 5 7 1 8 3
 GOOD_MIX_ARGS = $(POSITVES_ARGS) $(NEGATIVES_ARGS)
 
-# Test Section
+# Test Variables
 
 all: $(NAME)
 
@@ -40,11 +43,11 @@ $(NAME): $(notdir $(OBJS))
 	@ar rc $(PUSH_SWAP_LIB) $(notdir $(OBJS))
 	@$(CC) $(FLAGS) $(INC_FLAG) $(SRC_PATH)$(NAME).c -o $(NAME) $(PUSH_SWAP_LIB_PATH)
 
-$(notdir $(OBJS)): $(HELPERS)
+$(notdir $(OBJS)): $(HELPERS) | $(MOVEMENTS)
 	@make --directory=$(LIBFT_PATH)
 	@cp $(LIBFT_PATH)$(LIBFT) ./
 	@mv $(LIBFT) $(PUSH_SWAP_LIB)
-	@$(CC) -c $(FLAGS) $(INC_FLAG) $(HELPERS)
+	@$(CC) -c $(FLAGS) $(INC_FLAG) $(HELPERS) $(MOVEMENTS)
 
 clean:
 	@make clean --directory=$(LIBFT_PATH)

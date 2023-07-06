@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 20:32:58 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/05 17:15:49 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/06 08:04:29 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,14 @@ void	fill_nodes(Node *head, char **args);
 Node	*args_to_linked_list(char **args, size_t nodes_amount);
 
 // nodes
+
+// movements
+
+void	swap(Node *head);
+void	sa(Node *head_a);
+void	sb(Node *head_b);
+void	ss(Node *head_a, Node *head_b);
+
+// movements
 
 #endif
