@@ -6,11 +6,11 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 15:26:28 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/05 17:48:11 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/06 07:48:51 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "../../inc/push_swap.h"
 
 Node	*create_nodes(size_t nodes_amount)
 {

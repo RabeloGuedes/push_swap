@@ -6,11 +6,11 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 20:31:28 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/05 16:38:35 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/06 07:49:11 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "../../inc/push_swap.h"
 
 int	are_arg_num(const char *str)
 {

@@ -12,8 +12,9 @@ TEST_PATH = test/
 HELPERS_PATH = helpers/
 INC_FLAG = -I ./inc
 
-HELPERS =	$(HELPERS_PATH)int_checker.c $(HELPERS_PATH)args_checker.c\
-			$(HELPERS_PATH)args_to_linked_list.c
+HELPERS =	$(SRC_PATH)$(HELPERS_PATH)int_checker.c\
+			$(SRC_PATH)$(HELPERS_PATH)args_checker.c\
+			$(SRC_PATH)$(HELPERS_PATH)args_to_linked_list.c
 
 OBJS = $(HELPERS:.c=.o)
 

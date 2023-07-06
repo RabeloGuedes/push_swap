@@ -6,11 +6,11 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 15:17:16 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/05 17:18:29 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/06 07:48:47 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "../../inc/push_swap.h"
 
 int	args_checker(char **args)
 {
