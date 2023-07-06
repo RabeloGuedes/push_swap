@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 20:31:28 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/06 07:49:11 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/06 09:37:01 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	are_arg_num(const char *str)
 	return (1);
 }
 
-int a_is_int_range(const char *str)
+int	a_is_int_range(const char *str)
 {
 	long long	nbr;
 

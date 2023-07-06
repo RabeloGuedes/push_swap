@@ -6,13 +6,13 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 07:51:42 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/06 08:03:34 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/06 09:37:36 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
-void	swap(Node *head)
+void	swap(t_node *head)
 {
 	int	temp;
 
@@ -26,17 +26,17 @@ void	swap(Node *head)
 	}
 }
 
-void	sa(Node *head_a)
+void	sa(t_node *head_a)
 {
 	swap(head_a);
 }
 
-void	sb(Node *head_b)
+void	sb(t_node *head_b)
 {
 	swap(head_b);
 }
 
-void	ss(Node *head_a, Node *head_b)
+void	ss(t_node *head_a, t_node *head_b)
 {
 	sa(head_a);
 	sb(head_b);

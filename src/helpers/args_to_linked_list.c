@@ -6,41 +6,50 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 15:26:28 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/06 07:48:51 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/06 09:37:22 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
-Node	*create_nodes(size_t nodes_amount)
+int	bind_nodes(t_node *prev_node, t_node *new_node)
 {
-	Node	*head;
-	Node	*curr;
+	if (!prev_node || !new_node || prev_node == new_node)
+		return (0);
+	prev_node->next = new_node;
+	new_node->prev = prev_node;
+	return (1);
+}
 
-	head = (Node *)malloc(sizeof(Node));
+t_node	*create_node(void)
+{
+	t_node	*new_node;
+
+	new_node = (t_node *)malloc(sizeof(t_node));
+	if (!new_node)
+		return (NULL);
+	return (new_node);
+}
+
+t_node	*create_nodes(size_t nodes_amount)
+{
+	t_node	*head;
+	t_node	*curr;
+
+	head = (t_node *)malloc(sizeof(t_node));
 	if (!head)
 		return (NULL);
-	head->is_first = 1;
-	head->is_last = 0;
 	curr = head;
 	while (--nodes_amount)
 	{
-			curr->next = (Node *)malloc(sizeof(Node));
-			if (!curr->next)
-				return (NULL);
-			curr->next->prev = curr;
-			curr = curr->next;
-			curr->is_first = 0;
-			curr->is_last = 0;
+		if (!bind_nodes(curr, create_node()))
+			return (NULL);
+		curr = curr->next;
 	}
-	curr->is_first = 0;
-	curr->is_last = 1;
-	curr->next = head;
-	head->prev = curr;
 	return (head);
 }
 
-void	fill_nodes(Node *head, char **args)
+void	fill_nodes(t_node *head, char **args)
 {
 	while (*args)
 	{
@@ -49,9 +58,9 @@ void	fill_nodes(Node *head, char **args)
 	}
 }
 
-Node	*args_to_linked_list(char **args, size_t nodes_amount)
+t_node	*args_to_linked_list(char **args, size_t nodes_amount)
 {
-	Node	*head;
+	t_node	*head;
 
 	head = create_nodes(nodes_amount);
 	if (!head)
