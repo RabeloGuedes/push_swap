@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   free_nodes.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/27 15:11:35 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/07 11:20:35 by arabelo-         ###   ########.fr       */
+/*   Created: 2023/07/07 11:26:58 by arabelo-          #+#    #+#             */
+/*   Updated: 2023/07/07 11:27:07 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-int	main(int ac, char **av)
+void	free_nodes(t_list *head)
 {
-	if (ac > 1)
+	t_list	*curr;
+
+	curr = head;
+	while (curr)
 	{
-		if (!args_checker(++av))
-			return (0);
-		test_push(av);
+		curr = curr->next;
+		free(head->content);
+		free(head);
+		head = curr;
 	}
-	return (0);
 }

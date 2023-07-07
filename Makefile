@@ -58,7 +58,7 @@ fclean: clean
 	@make fclean --directory=$(LIBFT_PATH)
 	@rm -rf $(PUSH_SWAP_LIB) $(NAME) $(NAME).dSYM
 
-debug: $(notdir $(OBJS))
+debug: fclean $(notdir $(OBJS))
 	@ar rc $(PUSH_SWAP_LIB) $(notdir $(OBJS))
 	@$(CC) $(FLAGS) $(DEBUG_FLAGS) $(INC_FLAG) $(SRC_PATH)$(NAME).c -o $(NAME) $(PUSH_SWAP_LIB_PATH)
 

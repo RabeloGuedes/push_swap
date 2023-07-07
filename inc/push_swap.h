@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 20:32:58 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/06 20:32:51 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/07 10:14:14 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,8 @@ t_list	*create_nodes(char **args);
 // movements
 
 void	swap(t_list **stack, char swap_type);
-void	ss(t_list *stack_a, t_list *stack_b, char swap_type);
-void	push(t_list *dest_top, t_list *origin_top);
-void	pa(t_list *head_a, t_list *head_b);
+void	ss(t_list **stack_a, t_list **stack_b, char swap_type);
+void	push(t_list **dest_top, t_list **origin_top, char push_type);
 
 // movements
 

@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 07:51:42 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/06 20:43:09 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/07 11:25:22 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	swap(t_list **stack, char swap_type)
 		second = (*stack)->next;
 		first->next = second->next;
 		second->next = first;
-
 		*stack = second;
 	}
 	if (swap_type == 'a')
@@ -32,9 +31,9 @@ void	swap(t_list **stack, char swap_type)
 		ft_printf("sb\n");
 }
 
-void	ss(t_list *stack_a, t_list *stack_b, char swap_type)
+void	ss(t_list **stack_a, t_list **stack_b, char swap_type)
 {
-	swap(&stack_a, swap_type);
-	swap(&stack_b, swap_type);
+	swap(stack_a, swap_type);
+	swap(stack_b, swap_type);
 	ft_printf("ss\n");
 }
