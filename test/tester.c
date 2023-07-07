@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 17:58:07 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/07 11:29:17 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/07 17:51:38 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,19 @@ void	test_push(char **args)
 	free(head_b);
 	free(*args_b);
 	free(args_b);
+}
+
+void	test_rotate(char **args)
+{
+	t_list	**head_a;
+
+	head_a = (t_list **)malloc(sizeof(t_list *));
+	*head_a = create_nodes(args);
+	if (!*head_a)
+		return ;
+	display_rotate(head_a, 'a');
+	free_nodes(*head_a);
+	free(head_a);
 }
 
 int	main(int ac, char **av)

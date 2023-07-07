@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 15:11:35 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/07 11:20:35 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/07 17:52:14 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int ac, char **av)
 	{
 		if (!args_checker(++av))
 			return (0);
-		test_push(av);
+		test_rotate(av);
 	}
 	return (0);
 }

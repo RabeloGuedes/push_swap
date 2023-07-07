@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 11:26:03 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/07 11:29:10 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/07 17:52:02 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,13 @@ void	display_push(t_list **head_a, t_list **head_b)
 	display_nodes(*head_a);
 	ft_printf("After Push B:\n");
 	display_nodes(*head_b);
+}
+
+void	display_rotate(t_list **head, char rotate_type)
+{
+	ft_printf("Before rotate A:\n");
+	display_nodes(*head);
+	rotate(head, rotate_type);
+	ft_printf("After rotate A:\n");
+	display_nodes(*head);
 }
