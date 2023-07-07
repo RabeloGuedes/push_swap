@@ -1,35 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display.c                                          :+:      :+:    :+:   */
+/*   display_movements.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 11:26:03 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/07 17:52:02 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/07 19:38:38 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
-
-void	display_node_infos(t_list *node)
-{
-	ft_printf("	{\n		data: %i,\n", *(int *)(node->content));
-	ft_printf("		next: %p,\n", node->next);
-	ft_printf("		address: %p\n", node);
-	ft_printf("	},\n");
-}
-
-void	display_nodes(t_list *stack)
-{
-	ft_printf("[\n");
-	while (stack)
-	{
-		display_node_infos(stack);
-		stack = stack->next;
-	}
-	ft_printf("]\n");
-}
 
 void	display_swap(t_list	**head)
 {
@@ -58,6 +39,15 @@ void	display_rotate(t_list **head, char rotate_type)
 	ft_printf("Before rotate A:\n");
 	display_nodes(*head);
 	rotate(head, rotate_type);
+	ft_printf("After rotate A:\n");
+	display_nodes(*head);
+}
+
+void	display_reverse_rotate(t_list **head, char rotate_type)
+{
+	ft_printf("Before rotate A:\n");
+	display_nodes(*head);
+	reverse_rotate(head, rotate_type);
 	ft_printf("After rotate A:\n");
 	display_nodes(*head);
 }

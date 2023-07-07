@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   display_nodes.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/27 15:11:35 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/07 19:37:29 by arabelo-         ###   ########.fr       */
+/*   Created: 2023/07/07 19:38:10 by arabelo-          #+#    #+#             */
+/*   Updated: 2023/07/07 19:38:30 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-int	main(int ac, char **av)
+void	display_node_infos(t_list *node)
 {
-	if (ac > 1)
+	ft_printf("	{\n		data: %i,\n", *(int *)(node->content));
+	ft_printf("		next: %p,\n", node->next);
+	ft_printf("		address: %p\n", node);
+	ft_printf("	},\n");
+}
+
+void	display_nodes(t_list *stack)
+{
+	ft_printf("[\n");
+	while (stack)
 	{
-		if (!args_checker(++av))
-			return (0);
+		display_node_infos(stack);
+		stack = stack->next;
 	}
-	return (0);
+	ft_printf("]\n");
 }

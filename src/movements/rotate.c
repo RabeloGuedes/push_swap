@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 17:14:06 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/07 17:51:02 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/07 19:37:18 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	rotate(t_list **head, char rotate_type)
 {
 	t_list	*temp;
 
+	if (!head || !*head)
+		return ;
 	temp = *head;
 	while ((*head)->next)
 	{
@@ -40,5 +42,30 @@ void	rr(t_list **head_a, t_list **head_b, char rotate_type)
 void	reverse_rotate(t_list **head, char rr_type)
 {
 	t_list	*last;
+	t_list	*curr;
 
+	if (!head || !*head || !(*head)->next)
+		return ;
+	curr = *head;
+	while (curr->next)
+	{
+		if (!curr->next->next)
+			break ;
+		curr = curr->next;
+	}
+	last = curr->next;
+	curr->next = NULL;
+	last->next = *head;
+	*head = last;
+	if (rr_type == 'a')
+		ft_printf("rra\n");
+	else if (rr_type == 'b')
+		ft_printf("rrb\n");
+}
+
+void	rrr(t_list **head_a, t_list **head_b, char rr_type)
+{
+	reverse_rotate(head_a, rr_type);
+	reverse_rotate(head_b, rr_type);
+	ft_printf("rrr\n");
 }
