@@ -15,7 +15,10 @@ INC_FLAG = -I ./inc
 
 HELPERS =	$(SRC_PATH)$(HELPERS_PATH)int_checker.c\
 			$(SRC_PATH)$(HELPERS_PATH)args_checker.c\
-			$(SRC_PATH)$(HELPERS_PATH)args_to_linked_list.c
+			$(SRC_PATH)$(HELPERS_PATH)create_nodes.c\
+			$(SRC_PATH)$(HELPERS_PATH)free_nodes.c\
+			$(SRC_PATH)$(HELPERS_PATH)order_checker.c
+
 
 MOVEMENTS = $(SRC_PATH)$(MOVEMENTS_PATH)swap.c\
 			$(SRC_PATH)$(MOVEMENTS_PATH)push.c
