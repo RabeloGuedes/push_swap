@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 20:32:58 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/10 14:35:43 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/10 18:16:17 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		a_is_int_range(const char *str);
 int		duplicates_checker(char **args);
 int		args_checker(char **args);
 int		is_ascending(int a, int b);
-int		is_ordered(t_list **head, int (*cmp)(int, int));
+int		is_ordered(t_list *head, int (*cmp)(int, int));
 int		size_checker(t_list **head);
 
 // helpers
@@ -48,5 +48,7 @@ void	rrr(t_list **head_a, t_list **head_b, char rr_type);
 // movements
 
 void	push_swap(char **av);
+void	handle_up_to_3(t_list **head);
+void	handle_movement(t_list **head_a, t_list **head_b);
 
 #endif
