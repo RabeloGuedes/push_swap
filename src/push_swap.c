@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 15:11:35 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/10 14:10:33 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/10 14:54:36 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void	push_swap(char **av)
 	if (!head_a || !head_b)
 		return ;
 	*head_a = create_nodes(av);
-	ft_printf("Is ordered: %i\n", is_ordered(head_a, is_ascending));
+	if (size_checker(head_a))
+		ft_printf("Is ordered: %i\n", is_ordered(head_a, is_ascending));
 	free_nodes(*head_a);
 	free(head_a);
 	free(head_b);
