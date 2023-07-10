@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 08:21:25 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/07 11:17:51 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/10 18:52:09 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	push(t_list **dest_top, t_list **origin_top, char push_type)
 {
-	t_list	*temp;
+	t_list	*second_origin;
 
-	if (!origin_top || !(*origin_top))
+	if (!origin_top || !*origin_top)
 		return ;
-	temp = (*origin_top)->next;
+	second_origin = (*origin_top)->next;
 	(*origin_top)->next = *dest_top;
 	*dest_top = *origin_top;
-	*origin_top = temp;
+	*origin_top = second_origin;
 	if (push_type == 'a')
 		ft_printf("pa\n");
 	else if (push_type == 'b')

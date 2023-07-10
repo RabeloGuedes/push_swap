@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 15:11:35 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/10 18:19:09 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/10 18:51:37 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,14 @@ void	handle_up_to_3(t_list **head)
 	}		
 }
 
+void	sort_bigger_stack(t_list **head_a, t_list **head_b)
+{
+	while (ft_lstsize(*head_a) > 3)
+	{
+		
+	} 
+}
+
 void	handle_movement(t_list **head_a, t_list **head_b)
 {
 	int	stack_size;
@@ -64,6 +72,8 @@ void	handle_movement(t_list **head_a, t_list **head_b)
 	stack_size = ft_lstsize(*head_a);
 	if (stack_size <= 3)
 		handle_up_to_3(head_a);
+	else
+		sort_bigger_stack(head_a, head_b);
 }
 
 void	push_swap(char **av)
@@ -76,13 +86,15 @@ void	push_swap(char **av)
 	if (!head_a || !head_b)
 		return ;
 	*head_a = create_nodes(av);
-	ft_printf("Before: \n");
+	*head_b = NULL;
+	ft_printf("Stack A Before: \n");
 	display_nodes(*head_a);
-	if (size_checker(head_a))
+	if (size_checker(head_a) && !is_ordered(*head_a, &is_ascending))
 		handle_movement(head_a, head_b);
-	ft_printf("After: \n");
+	ft_printf("Stack A After: \n");
 	display_nodes(*head_a);
 	free_nodes(*head_a);
+	free_nodes(*head_b);
 	free(head_a);
 	free(head_b);
 }

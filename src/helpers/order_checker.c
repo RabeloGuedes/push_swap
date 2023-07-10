@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 13:31:12 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/10 17:16:20 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/10 18:28:44 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 int	is_ascending(int a, int b)
 {
 	return (a <= b);
+}
+
+int	is_descending(int a, int b)
+{
+	return (b <= a);
 }
 
 int	is_ordered(t_list *head, int (*cmp)(int, int))

@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 20:32:58 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/10 18:16:17 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/10 18:52:46 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int		a_is_int_range(const char *str);
 int		duplicates_checker(char **args);
 int		args_checker(char **args);
 int		is_ascending(int a, int b);
+int		is_descending(int a, int b);
 int		is_ordered(t_list *head, int (*cmp)(int, int));
 int		size_checker(t_list **head);
 
