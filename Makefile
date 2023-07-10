@@ -21,7 +21,9 @@ HELPERS =	$(SRC_PATH)$(HELPERS_PATH)int_checker.c\
 
 
 MOVEMENTS = $(SRC_PATH)$(MOVEMENTS_PATH)swap.c\
-			$(SRC_PATH)$(MOVEMENTS_PATH)push.c
+			$(SRC_PATH)$(MOVEMENTS_PATH)push.c\
+			$(SRC_PATH)$(MOVEMENTS_PATH)rotate.c
+
 
 OBJS = $(HELPERS:.c=.o) $(MOVEMENTS:.c=.o)
 

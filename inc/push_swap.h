@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 20:32:58 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/10 14:11:50 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/10 14:17:25 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,10 @@ void	free_nodes(t_list *head);
 void	swap(t_list **stack, char swap_type);
 void	ss(t_list **stack_a, t_list **stack_b, char swap_type);
 void	push(t_list **dest_top, t_list **origin_top, char push_type);
+void	rotate(t_list **head, char rotate_type);
+void	rr(t_list **head_a, t_list **head_b, char rotate_type);
+void	reverse_rotate(t_list **head, char rr_type);
+void	rrr(t_list **head_a, t_list **head_b, char rr_type);
 
 // movements
 
