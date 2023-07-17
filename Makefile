@@ -18,15 +18,22 @@ HELPERS =	$(SRC_PATH)$(HELPERS_PATH)int_checker.c\
 			$(SRC_PATH)$(HELPERS_PATH)create_nodes.c\
 			$(SRC_PATH)$(HELPERS_PATH)free_nodes.c\
 			$(SRC_PATH)$(HELPERS_PATH)order_checker.c\
-			$(SRC_PATH)$(HELPERS_PATH)size_checker.c
+			$(SRC_PATH)$(HELPERS_PATH)size_checker.c\
+			$(SRC_PATH)$(HELPERS_PATH)ft_lst_find.c\
+			$(SRC_PATH)$(HELPERS_PATH)calcalute_least_rotations.c\
+			$(SRC_PATH)$(HELPERS_PATH)handle_rotations_a.c\
+			$(SRC_PATH)$(HELPERS_PATH)handle_rotations_b.c\
+			$(SRC_PATH)$(HELPERS_PATH)sort.c\
+			$(SRC_PATH)$(HELPERS_PATH)rotations_cost.c
 
 
 MOVEMENTS = $(SRC_PATH)$(MOVEMENTS_PATH)swap.c\
 			$(SRC_PATH)$(MOVEMENTS_PATH)push.c\
 			$(SRC_PATH)$(MOVEMENTS_PATH)rotate.c
 
+TESTS = $(TEST_PATH)display_nodes.c
 
-OBJS = $(HELPERS:.c=.o) $(MOVEMENTS:.c=.o)
+OBJS = $(HELPERS:.c=.o) $(MOVEMENTS:.c=.o) $(TESTS:.c=.o)
 
 
 # Test Variables
@@ -50,11 +57,11 @@ $(NAME): $(notdir $(OBJS))
 	@ar rc $(PUSH_SWAP_LIB) $(notdir $(OBJS))
 	@$(CC) $(FLAGS) $(INC_FLAG) $(SRC_PATH)$(NAME).c -o $(NAME) $(PUSH_SWAP_LIB_PATH)
 
-$(notdir $(OBJS)): $(HELPERS) | $(MOVEMENTS)
+$(notdir $(OBJS)): $(HELPERS) $(MOVEMENTS) $(TESTS)
 	@make --directory=$(LIBFT_PATH)
 	@cp $(LIBFT_PATH)$(LIBFT) ./
 	@mv $(LIBFT) $(PUSH_SWAP_LIB)
-	@$(CC) -c $(FLAGS) $(INC_FLAG) $(HELPERS) $(MOVEMENTS)
+	@$(CC) -c $(FLAGS) $(INC_FLAG) $(HELPERS) $(MOVEMENTS) $(TESTS)
 
 clean:
 	@make clean --directory=$(LIBFT_PATH)

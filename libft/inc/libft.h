@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 00:38:40 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/04 14:51:20 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/13 13:49:44 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,6 @@ t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 int			ft_isspace(int c);
 long long	ft_atoll(const char *str);
+int			ft_abs_value(int nbr);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 19:38:10 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/07 19:38:30 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/16 19:02:15 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,16 @@ void	display_nodes(t_list *stack)
 		stack = stack->next;
 	}
 	ft_printf("]\n");
+}
+
+void	display_nodes_simple(t_list *stack)
+{
+	while (stack)
+	{
+		if (stack->next)
+			ft_printf("%i -> ", *(int *)stack->content);
+		else
+			ft_printf("%i\n", *(int *)stack->content);
+		stack = stack->next;
+	}
 }
