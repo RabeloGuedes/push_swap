@@ -1,17 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   args_to_linked_list.c                              :+:      :+:    :+:   */
+/*   create_nodes.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 15:26:28 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/06 21:00:06 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/18 10:34:30 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
+// This function creates a node and set
+// the content of the node to hold the
+// integer passed by the parameter and
+// the next pointer to NULL, assuming
+// it is the last one and returns it.
 t_list	*create_node(int data)
 {
 	t_list	*new_node;
@@ -27,6 +32,10 @@ t_list	*create_node(int data)
 	return (new_node);
 }
 
+// This function uses the create_node function
+// to create dynamically all the necessaries nodes
+// based on the arguments and returns the head
+// (first node) of the created stack.
 t_list	*create_nodes(char **args)
 {
 	t_list	*curr;

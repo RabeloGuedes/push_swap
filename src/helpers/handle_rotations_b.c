@@ -6,12 +6,16 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 18:17:56 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/17 13:43:59 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/18 10:53:37 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
+// This function handles the rotations in
+// counterclockwise direction when both stacks
+// need to be rotate in this same direction and
+// stack B is the origin.
 void	handle_rotation_b(t_list **head_origin,
 	t_list **head_dest, char position_type)
 {
@@ -41,6 +45,10 @@ void	handle_rotation_b(t_list **head_origin,
 	}
 }
 
+// This function handles the rotations in
+// clockwise direction when both stacks
+// need to be rotate in this same direction
+// and stack B is the origin.
 void	handle_reverse_rotation_b(t_list **head_origin,
 	t_list **head_dest, char position_type)
 {
@@ -70,6 +78,10 @@ void	handle_reverse_rotation_b(t_list **head_origin,
 	}
 }
 
+// This function handles rotations when 
+// origin needs to reverse_rotate and
+// dest needs to rotate while stack B
+// is the origin.
 void	exotic_rotation_b_1(t_list **head_origin, t_list **head_dest,
 	int	*origin_rotations, int *dest_rotations)
 {
@@ -85,6 +97,10 @@ void	exotic_rotation_b_1(t_list **head_origin, t_list **head_dest,
 	}
 }
 
+// This function handles rotations
+// when origin needs to rotate and
+// dest needs to reverse_rotate
+// while stack B is the origin.
 void	exotic_rotation_b_2(t_list **head_origin, t_list **head_dest,
 	int	*origin_rotations, int *dest_rotations)
 {
@@ -100,6 +116,10 @@ void	exotic_rotation_b_2(t_list **head_origin, t_list **head_dest,
 	}
 }
 
+// This function uses the exotic_rotation_b_1
+// as well as the exotic_rotation_b_2 functions
+// in order to handle the rotations of both stacks
+// when stack B is the origin.
 void	handle_exotic_rotation_b(t_list **head_origin,
 	t_list **head_dest, char position_type)
 {

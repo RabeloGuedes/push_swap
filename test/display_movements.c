@@ -6,12 +6,14 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 11:26:03 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/07 19:38:38 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/18 11:27:53 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
+// This function displays a
+// stack before and after swap.
 void	display_swap(t_list	**head)
 {
 	ft_printf("Before Swap A:\n");
@@ -21,6 +23,8 @@ void	display_swap(t_list	**head)
 	display_nodes(*head);
 }
 
+// This function displays two stacks
+// before and after push.
 void	display_push(t_list **head_a, t_list **head_b)
 {
 	ft_printf("Before Push A:\n");
@@ -34,6 +38,8 @@ void	display_push(t_list **head_a, t_list **head_b)
 	display_nodes(*head_b);
 }
 
+// This function displays a
+// stack before and after rotate.
 void	display_rotate(t_list **head, char rotate_type)
 {
 	ft_printf("Before rotate A:\n");
@@ -43,6 +49,8 @@ void	display_rotate(t_list **head, char rotate_type)
 	display_nodes(*head);
 }
 
+// This function displays a stack
+// before and after reverse rotate.
 void	display_reverse_rotate(t_list **head, char rotate_type)
 {
 	ft_printf("Before rotate A:\n");

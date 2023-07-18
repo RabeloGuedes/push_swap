@@ -6,12 +6,15 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 09:52:49 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/17 13:16:35 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/18 10:45:20 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
+// This function iterates over a stack from a
+// certain node, assuming it is the head, and
+// returns the node, which content is the highest. 
 t_list	*ft_lst_find_max(t_list *head)
 {
 	t_list	*max_node;
@@ -28,6 +31,9 @@ t_list	*ft_lst_find_max(t_list *head)
 	return (max_node);
 }
 
+// This function iterates over a stack from a
+// certain node, assuming it is the head, and
+// returns the node, which content is the lowest.
 t_list	*ft_lst_find_min(t_list *head)
 {
 	t_list	*min_node;
@@ -44,6 +50,12 @@ t_list	*ft_lst_find_min(t_list *head)
 	return (min_node);
 }
 
+// This function iterates over a stack from a
+// certain node, assuming it is the head, and
+// returns the node, which represents the correct
+// position for a new node (number) when pushing
+// from stack A to stack B and it should order it
+// in descending order. 
 t_list	*find_the_right_position_b(t_list *new_node, t_list *head_dest)
 {
 	int		new_node_content;
@@ -70,6 +82,12 @@ t_list	*find_the_right_position_b(t_list *new_node, t_list *head_dest)
 	return (NULL);
 }
 
+// This function iterates over a stack from a
+// certain node, assuming it is the head, and
+// returns the node, which represents the correct
+// position for a new node (number) when pushing
+// from stack B to stack A and it should order it
+// in ascending order.
 t_list	*find_the_right_position_a(t_list *new_node, t_list *head_dest)
 {
 	int		new_node_content;
@@ -96,6 +114,10 @@ t_list	*find_the_right_position_a(t_list *new_node, t_list *head_dest)
 	return (NULL);
 }
 
+// This function calculates which node needs
+// the least amount of movements to get into
+// the right position of the destination stack
+// from the origin stack and returns it.
 t_list	*find_cheapest(t_list *head_dest, t_list *head_origin, char order_type)
 {
 	t_list	*cheapest;

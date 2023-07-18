@@ -6,12 +6,15 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 07:51:42 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/10 16:50:12 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/18 11:17:29 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
+// This function swaps the first and the
+// second nodes from a given stack, if 
+// there is at least two nodes.
 void	swap(t_list **head, char swap_type)
 {
 	t_list	*first;
@@ -31,6 +34,8 @@ void	swap(t_list **head, char swap_type)
 		ft_printf("sb\n");
 }
 
+// This function swaps the first and the
+// second nodes from a two given stacks.
 void	ss(t_list **head_a, t_list **head_b, char swap_type)
 {
 	swap(head_a, swap_type);

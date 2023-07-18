@@ -6,12 +6,15 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 17:14:06 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/07 19:37:18 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/18 11:15:39 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
+// This function rotates the given stack,
+// i. e. the first node turns into the last,
+// the second turns into the first and so on.
 void	rotate(t_list **head, char rotate_type)
 {
 	t_list	*temp;
@@ -32,6 +35,9 @@ void	rotate(t_list **head, char rotate_type)
 		ft_printf("rb\n");
 }
 
+// This function rotates the given stacks simultaneously,
+// i. e. the first node turns into the last,
+// the second turns into the first and so on.
 void	rr(t_list **head_a, t_list **head_b, char rotate_type)
 {
 	rotate(head_a, rotate_type);
@@ -39,6 +45,9 @@ void	rr(t_list **head_a, t_list **head_b, char rotate_type)
 	ft_printf("rr\n");
 }
 
+// This function reverse rotates the given stack,
+// i. e. the last node turns into the first,
+// the antepenultimate turns into the last and so on.
 void	reverse_rotate(t_list **head, char rr_type)
 {
 	t_list	*last;
@@ -63,6 +72,9 @@ void	reverse_rotate(t_list **head, char rr_type)
 		ft_printf("rrb\n");
 }
 
+// This function reverse rotates the given stacks
+// simultaneosly, i. e. the last node turns into the first,
+// the antepenultimate turns into the last and so on.
 void	rrr(t_list **head_a, t_list **head_b, char rr_type)
 {
 	reverse_rotate(head_a, rr_type);

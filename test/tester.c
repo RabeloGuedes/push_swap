@@ -6,12 +6,13 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 17:58:07 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/10 18:15:12 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/18 11:33:28 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
+// This function tests if the push function works properly.
 void	test_push(char **args)
 {
 	t_list	**head_a;
@@ -37,6 +38,7 @@ void	test_push(char **args)
 	free(args_b);
 }
 
+// This function tests if the rotate function works properly.
 void	test_rotate(char **args)
 {
 	t_list	**head_a;
@@ -50,6 +52,7 @@ void	test_rotate(char **args)
 	free(head_a);
 }
 
+// This function tests if the reverse rotate function works properly.
 void	test_reverse_rotate(char **args)
 {
 	t_list	**head_a;
@@ -63,6 +66,7 @@ void	test_reverse_rotate(char **args)
 	free(head_a);
 }
 
+// This function tests if the swap function works properly.
 void	test_swap(char **av)
 {
 	t_list	**head;

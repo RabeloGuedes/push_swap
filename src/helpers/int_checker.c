@@ -6,12 +6,14 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 20:31:28 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/06 09:37:01 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/18 10:58:03 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
+// This function checks if a given string
+// is valid as a ascii number representation.
 int	are_arg_num(const char *str)
 {
 	if (*str == '+' || *str == '-')
@@ -25,6 +27,10 @@ int	are_arg_num(const char *str)
 	return (1);
 }
 
+// This function checks if a given string
+// is valid as a ascii integer represatation,
+// this means that it should be bewteen INT_MIN
+// and INT_MAX, included.
 int	a_is_int_range(const char *str)
 {
 	long long	nbr;
@@ -35,6 +41,8 @@ int	a_is_int_range(const char *str)
 	return (1);
 }
 
+// This function checks if any of the arguments
+// is duplicated.
 int	duplicates_checker(char **args)
 {
 	char	**save;

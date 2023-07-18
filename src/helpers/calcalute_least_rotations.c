@@ -6,12 +6,17 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 11:13:14 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/17 12:46:58 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/18 10:24:27 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
+// This function calculates how many rotations
+// are necessary to get a certain node to the
+// top of the stack, if by rotating counterclockwise
+// (forward/rotate) or by rotating clockwise
+// (backward/reverse rotate).
 int	rotations_to_top(t_list *head, t_list *searched_node)
 {
 	int	forward;
@@ -35,6 +40,11 @@ int	rotations_to_top(t_list *head, t_list *searched_node)
 		return (-backward);
 }
 
+// This function calculates how many rotations
+// are necessary to get a certain node to the
+// bottom of the stack, if by rotating counterclockwise
+// (forward/rotate) or by rotating clockwise
+// (backward/reverse rotate).
 int	rotations_to_bottom(t_list *head, t_list *searched_node)
 {
 	int	forward;
@@ -58,6 +68,12 @@ int	rotations_to_bottom(t_list *head, t_list *searched_node)
 		return (-backward);
 }
 
+// This function calculates the position to
+// insert a new node (number) into the right
+// place on the destination stack, by checking
+// where a greater number (node) and a smaller
+// number (node) are located, in order to
+// insert the new one bewteen both.
 int	right_position_at_dest(t_list *new_node,
 	t_list *head_dest, char postion_type)
 {
