@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 15:11:35 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/18 14:06:23 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/18 18:41:58 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	push_swap(char **av)
 		return ;
 	*head_a = create_nodes(av);
 	*head_b = NULL;
+	display_nodes_simple(*head_a);
 	if (size_checker(head_a) && !is_ordered(*head_a, &is_ascending))
 		handle_movement(head_a, head_b);
 	free_nodes(*head_a);
