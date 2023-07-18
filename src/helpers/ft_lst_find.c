@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 09:52:49 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/18 10:45:20 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/18 14:08:57 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,22 +122,23 @@ t_list	*find_cheapest(t_list *head_dest, t_list *head_origin, char order_type)
 {
 	t_list	*cheapest;
 	t_list	*save_origin_top;
-	int		cheapest_rotations_origin;
-	int		cheapest_rotations_dest;
+	int		cheapest_total_rotations;
+	int		curr_total_rotations;
 
 	cheapest = head_origin;
 	save_origin_top = head_origin;
-	cheapest_rotations_origin = ft_abs_value(rotations_to_top(head_origin,
-				head_origin));
-	cheapest_rotations_dest = ft_abs_value(right_position_at_dest(head_origin,
-				head_dest, order_type));
+	cheapest_total_rotations = rotations_cost(cheapest, head_origin,
+			head_dest, order_type);
 	head_origin = head_origin->next;
 	while (head_origin)
 	{
-		if (cheapest_rotations_origin + cheapest_rotations_dest
-			> rotations_cost(head_origin, save_origin_top,
-				head_dest, order_type))
+		curr_total_rotations = rotations_cost(head_origin,
+				save_origin_top, head_dest, order_type);
+		if (cheapest_total_rotations > curr_total_rotations)
+		{
 			cheapest = head_origin;
+			cheapest_total_rotations = curr_total_rotations;
+		}
 		head_origin = head_origin->next;
 	}
 	return (cheapest);

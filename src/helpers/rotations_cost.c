@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 13:16:45 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/18 11:02:55 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/18 14:09:17 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,23 @@
 int	rotations_cost(t_list *searched_node, t_list *head_origin,
 	t_list *head_dest, char order_type)
 {
-	return (ft_abs_value(rotations_to_top(head_origin, searched_node))
-		+ ft_abs_value(right_position_at_dest(searched_node, head_dest,
-				order_type)));
+	int	origin_rotations;
+	int	dest_rotations;
+
+	origin_rotations = rotations_to_top(head_origin, searched_node);
+	dest_rotations = right_position_at_dest(searched_node,
+			head_dest, order_type);
+	if (origin_rotations < 0 && dest_rotations < 0)
+	{
+		if (origin_rotations <= dest_rotations)
+			return (ft_abs_value(origin_rotations));
+		return (ft_abs_value(dest_rotations));
+	}
+	else if (origin_rotations > 0 && dest_rotations > 0)
+	{
+		if (origin_rotations >= dest_rotations)
+			return (ft_abs_value(origin_rotations));
+		return (ft_abs_value(dest_rotations));
+	}
+	return (ft_abs_value(origin_rotations) + ft_abs_value(dest_rotations));
 }
