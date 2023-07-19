@@ -6,12 +6,14 @@ LIBFT_PATH = ./libft/
 CC = cc
 FLAGS = -Wall -Wextra -Werror
 SANITIZE_FLAG = -fsanitize=address
-DEBUG_FLAGS = -g $(SANITIZE_FLAG)
+DEBUG_FLAGS = -g3 $(SANITIZE_FLAG)
 SRC_PATH = src/
 TEST_PATH = test/
 TEST_OUTPUT_FILES = test_output_files/
+TEST_ERROR_FILES = test_error_files/
 TEST_100 = test_100/
 TEST_500 = test_500/
+SHELL_SCRIPTS_PATH = shell_scripts/
 HELPERS_PATH = helpers/
 MOVEMENTS_PATH = movements/
 INC_FLAG = -I ./inc
@@ -76,18 +78,18 @@ $(NAME): $(notdir $(OBJS))
 	@$(CC) $(FLAGS) $(INC_FLAG) $(SRC_PATH)$(NAME).c -o $(NAME) $(PUSH_SWAP_LIB_PATH)
 
 $(notdir $(OBJS)): $(HELPERS) $(MOVEMENTS) $(TESTS)
-	@make --directory=$(LIBFT_PATH)
+	@make -s --directory=$(LIBFT_PATH)
 	@cp $(LIBFT_PATH)$(LIBFT) ./
 	@mv $(LIBFT) $(PUSH_SWAP_LIB)
 	@$(CC) -c $(FLAGS) $(INC_FLAG) $(HELPERS) $(MOVEMENTS) $(TESTS)
 
 clean:
-	@make clean --directory=$(LIBFT_PATH)
+	@make -s clean --directory=$(LIBFT_PATH)
 	@rm -f $(notdir $(OBJS)) tester
 
 fclean: clean
-	@make fclean --directory=$(LIBFT_PATH)
-	@rm -rf $(PUSH_SWAP_LIB) $(NAME) $(NAME).dSYM $(TEST_OUTPUT_FILES)
+	@make -s fclean --directory=$(LIBFT_PATH)
+	@rm -rf $(PUSH_SWAP_LIB) $(NAME) $(NAME).dSYM $(TEST_PATH)$(TEST_OUTPUT_FILES) $(TEST_PATH)$(TEST_ERROR_FILES)
 
 debug: fclean $(notdir $(OBJS))
 	@ar rc $(PUSH_SWAP_LIB) $(notdir $(OBJS))
@@ -131,20 +133,13 @@ test_input: $(notdir $(OBJS))
 test_files_lines: fclean $(notdir $(OBJS))
 	@ar rc $(PUSH_SWAP_LIB) $(notdir $(OBJS))
 	@$(CC) $(FLAGS) $(DEBUG_FLAGS) $(INC_FLAG) $(SRC_PATH)$(NAME).c -o $(NAME) $(PUSH_SWAP_LIB_PATH)
-	@test $(TEST_OUTPUT_FILES) | mkdir $(TEST_OUTPUT_FILES)
-	@test $(TEST_OUTPUT_FILES)$(TEST_100) | mkdir $(TEST_OUTPUT_FILES)$(TEST_100)
-	@test $(TEST_OUTPUT_FILES)$(TEST_500) | mkdir $(TEST_OUTPUT_FILES)$(TEST_500)
-	@echo "$(YELLOW)Testing 100 times with 100 random numbers$(WHITE)"
-	@for i in $$(seq 1 100); do ./$(NAME) $$(shuf -i 0-500 -n 100) > $(TEST_OUTPUT_FILES)$(TEST_100)test_100_numbers$$i.txt; done
-	@echo "$(SUPER_YELLOW)Testing 100 times with 500 random numbers$(WHITE)"
-	@echo "$(SUPER_RED)Be patient it takes some time$(WHITE)"
-	@for i in $$(seq 1 100); do ./$(NAME) $$(shuf -i 0-5000 -n 500) > $(TEST_OUTPUT_FILES)$(TEST_500)test_500_numbers$$i.txt; done
-	@make test_100
-	@make test_500
-	
+	@cd $(TEST_PATH)$(SHELL_SCRIPTS_PATH) && sh create_test_files.sh
+# @make test_100
+# @make test_500
+
 test_100:
-	@cd test && sh test_output_100_random_numbers.sh
+	@cd $(TEST_PATH)$(SHELL_SCRIPTS_PATH) && sh test_output_100_random_numbers.sh
 
 test_500:
-	@cd test && sh test_output_500_random_numbers.sh
+	@cd $(TEST_PATH)$(SHELL_SCRIPTS_PATH) && sh test_output_500_random_numbers.sh
 re: fclean all
