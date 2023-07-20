@@ -3,7 +3,11 @@
 LINES_IN_FILES=0
 TOTAL_LINES=0
 MAX_LINES=0
-MIN_LINES=$(wc -l < ../test_output_files/test_100/test_100_numbers1.txt)
+MIN_LINES=$(wc -l < ../test_output_files/test_100/test_100_numbers_output1.txt)
+TEST_OUTPUT_FILES_PATH="../test_output_files/"
+TEST_100_PATH="test_100/"
+FILE_NAME_100_OUTPUT="test_100_numbers_output"
+
 BLACK="\033[30m"
 RED="\033[31m"
 GREEN="\033[32m"
@@ -19,25 +23,31 @@ SUPER_BLUE="\033[94m"
 SUPER_MAGENTA="\033[95m"
 SUPER_CYAN="\033[96m"
 
+# It counts the number of lines of 100 output files and display it's name as well as the number of lines.
+# This is for the 100 numbers sequence.
 for i in $(seq 1 100); do
-	LINES_IN_FILES=$(wc -l < ../test_output_files/test_100/test_100_numbers$i.txt);
+	LINES_IN_FILES=$(wc -l < $TEST_OUTPUT_FILES_PATH$TEST_100_PATH$FILE_NAME_100_OUTPUT$i.txt);
 	if [ "$LINES_IN_FILES" -gt "$MAX_LINES" ]; then MAX_LINES=$LINES_IN_FILES; fi;
 	if [ "$LINES_IN_FILES" -lt "$MIN_LINES" ]; then MIN_LINES=$LINES_IN_FILES; fi;
 	if [ "$LINES_IN_FILES" -gt "700" ];
-		then echo "The file test_100_numbers$i.txt has: $SUPER_RED$LINES_IN_FILES$WHITE lines";
+		then echo "The file $FILE_NAME_100_OUTPUT$i.txt has: $SUPER_RED$LINES_IN_FILES$WHITE lines";
 	else
-		echo "The file test_100_numbers$i.txt has: $SUPER_GREEN$LINES_IN_FILES$WHITE lines";
+		echo "The file $FILE_NAME_100_OUTPUT$i.txt has: $SUPER_GREEN$LINES_IN_FILES$WHITE lines";
 	fi;
 	TOTAL_LINES=$(($TOTAL_LINES + $LINES_IN_FILES));
 done
 
-echo "$SUPER_MAGENTA Total lines in all files: $TOTAL_LINES$WHITE"
-echo "$SUPER_BLUE The average lines per file is: $(($TOTAL_LINES / 100))$WHITE"
+echo "$MAGENTA Total lines in all files: $TOTAL_LINES$WHITE"
+echo "$BLUE The average lines per file is: $(($TOTAL_LINES / 100))$WHITE"
+
+# It shows the max number of lines, i.e. from the file with most lines.
 if [ "$MAX_LINES" -gt "700" ];
 	then echo "The file with the most lines has: $SUPER_RED$MAX_LINES$WHITE lines";
 else
 	echo "The file with the most lines has: $SUPER_GREEN$MAX_LINES$WHITE lines";
 fi;
+
+# It shows the min number of lines, i.e. from the file with least lines.
 if [ "$MIN_LINES" -gt "700" ];
 	then echo "The file with the least lines has: $SUPER_RED$MIN_LINES$WHITE lines";
 else

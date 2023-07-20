@@ -11,6 +11,7 @@ SRC_PATH = src/
 TEST_PATH = test/
 TEST_OUTPUT_FILES = test_output_files/
 TEST_ERROR_FILES = test_error_files/
+TEST_SEQUENCE = test_sequence/
 TEST_100 = test_100/
 TEST_500 = test_500/
 SHELL_SCRIPTS_PATH = shell_scripts/
@@ -68,7 +69,6 @@ TYPO_ARGS = 0 4 -2 3-
 NEGATIVES_ARGS = -2 -7 -3 -1 -5
 POSITVES_ARGS = 5 7 1 8 3
 GOOD_MIX_ARGS = $(POSITVES_ARGS) $(NEGATIVES_ARGS)
-TEST_LINES := 0;
 # Test Variables
 
 all: $(NAME)
@@ -89,7 +89,7 @@ clean:
 
 fclean: clean
 	@make -s fclean --directory=$(LIBFT_PATH)
-	@rm -rf $(PUSH_SWAP_LIB) $(NAME) $(NAME).dSYM $(TEST_PATH)$(TEST_OUTPUT_FILES) $(TEST_PATH)$(TEST_ERROR_FILES)
+	@rm -rf $(PUSH_SWAP_LIB) $(NAME) $(NAME).dSYM $(TEST_PATH)$(TEST_OUTPUT_FILES) $(TEST_PATH)$(TEST_ERROR_FILES) $(TEST_PATH)$(TEST_SEQUENCE)
 
 debug: fclean $(notdir $(OBJS))
 	@ar rc $(PUSH_SWAP_LIB) $(notdir $(OBJS))
@@ -97,49 +97,51 @@ debug: fclean $(notdir $(OBJS))
 
 test_input: $(notdir $(OBJS))
 	@ar rc $(PUSH_SWAP_LIB) $(notdir $(OBJS))
-	@$(CC) $(FLAGS) $(DEBUG_FLAGS) $(INC_FLAG) $(TEST_PATH)tester.c -o tester $(PUSH_SWAP_LIB_PATH)
-	@echo "input: \"$(STR_ARGS)\", expected: Error"
+	@$(CC) $(FLAGS) $(DEBUG_FLAGS) $(INC_FLAG) $(SRC_PATH)$(NAME).c -o $(NAME) $(PUSH_SWAP_LIB_PATH)
+# @cd $(TEST_PATH)$(SHELL_SCRIPTS_PATH) && sh test_inputs.sh
+	@echo "$(YELLOW)input: \"$(STR_ARGS)\", expected: Error$(RED)"
 	@sleep 2
-	@./tester $(STR_ARGS)
+	@./$(NAME) $(STR_ARGS)
 	@sleep 1
-	@echo "input: $(DUPLICANTES_ARGS), expected: Error"
+	@echo "$(YELLOW)input: $(DUPLICANTES_ARGS), expected: Error$(RED)"
 	@sleep 2
-	@./tester $(DUPLICANTES_ARGS)
+	@./$(NAME) $(DUPLICANTES_ARGS)
 	@sleep 1
-	@echo "input: \"$(ARG_A)\" \"$(ARG_B)\", expected: Error"
+	@echo "$(YELLOW)input: \"$(ARG_A)\" \"$(ARG_B)\", expected: Error$(RED)"
 	@sleep 2
-	@./tester $(DOUBLE_STR)
+	@./$(NAME) $(DOUBLE_STR)
 	@sleep 1
-	@echo "input: $(NOT_INT_ARGS), expected: Error"
+	@echo "$(YELLOW)input: $(NOT_INT_ARGS), expected: Error$(RED)"
 	@sleep 2
-	@./tester $(NOT_INT_ARGS)
+	@./$(NAME) $(NOT_INT_ARGS)
 	@sleep 1
-	@echo "input: $(TYPO_ARGS), expected: Error"
+	@echo "$(YELLOW)input: $(TYPO_ARGS), expected: Error$(RED)"
 	@sleep 2
-	@./tester $(TYPO_ARGS)
+	@./$(NAME) $(TYPO_ARGS)
 	@sleep 1
-	@echo "input: $(NEGATIVES_ARGS), expected: OK"
+	@echo "$(YELLOW)input: $(NEGATIVES_ARGS), expected: OK$(GREEN)"
 	@sleep 2
-	@./tester $(NEGATIVES_ARGS)
+	@./$(NAME) $(NEGATIVES_ARGS)
 	@sleep 1
-	@echo "input: $(POSITVES_ARGS), expected: OK"
+	@echo "$(YELLOW)input: $(POSITVES_ARGS), expected: OK$(GREEN)"
 	@sleep 2
-	@./tester $(POSITVES_ARGS)
+	@./$(NAME) $(POSITVES_ARGS)
 	@sleep 1
-	@echo "input: $(GOOD_MIX_ARGS), expected: OK"
+	@echo "$(YELLOW)input: $(GOOD_MIX_ARGS), expected: OK$(GREEN)"
 	@sleep 2
-	@./tester $(GOOD_MIX_ARGS)
+	@./$(NAME) $(GOOD_MIX_ARGS)
 
 test_files_lines: fclean $(notdir $(OBJS))
 	@ar rc $(PUSH_SWAP_LIB) $(notdir $(OBJS))
 	@$(CC) $(FLAGS) $(DEBUG_FLAGS) $(INC_FLAG) $(SRC_PATH)$(NAME).c -o $(NAME) $(PUSH_SWAP_LIB_PATH)
 	@cd $(TEST_PATH)$(SHELL_SCRIPTS_PATH) && sh create_test_files.sh
-# @make test_100
-# @make test_500
 
 test_100:
 	@cd $(TEST_PATH)$(SHELL_SCRIPTS_PATH) && sh test_output_100_random_numbers.sh
 
 test_500:
 	@cd $(TEST_PATH)$(SHELL_SCRIPTS_PATH) && sh test_output_500_random_numbers.sh
+
+tests: test_files_lines test_100 test_500
+
 re: fclean all

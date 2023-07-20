@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 18:17:56 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/19 16:20:29 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/20 10:18:51 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	handle_reverse_rotation_b(t_list **head_origin,
 	int		dest_rotations;
 	t_list	*cheapest;
 
-	cheapest = find_cheapest(*head_origin, *head_dest, position_type);
+	cheapest = find_cheapest(*head_dest, *head_origin, position_type);
 	origin_rotations = rotations_to_top(*head_origin, cheapest);
 	dest_rotations = right_position_at_dest(cheapest, *head_dest,
 			position_type);
