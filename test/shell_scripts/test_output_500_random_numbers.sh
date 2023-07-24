@@ -25,7 +25,7 @@ SUPER_CYAN="\033[96m"
 
 # It counts the number of lines of 100 output files and display it's name as well as the number of lines.
 # This is for the 500 numbers sequence.
-for i in $(seq 1 100); do
+for i in $(seq 1 15); do
 	LINES_IN_FILES=$(wc -l < "$TEST_OUTPUT_FILES_PATH$TEST_500_PATH$FILE_NAME_500_OUTPUT$i.txt");
 	if [ "$LINES_IN_FILES" -gt "$MAX_LINES" ]; then MAX_LINES=$LINES_IN_FILES; fi;
 	if [ "$LINES_IN_FILES" -lt "$MIN_LINES" ]; then MIN_LINES=$LINES_IN_FILES; fi;

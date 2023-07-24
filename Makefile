@@ -98,7 +98,6 @@ debug: fclean $(notdir $(OBJS))
 test_input: $(notdir $(OBJS))
 	@ar rc $(PUSH_SWAP_LIB) $(notdir $(OBJS))
 	@$(CC) $(FLAGS) $(DEBUG_FLAGS) $(INC_FLAG) $(SRC_PATH)$(NAME).c -o $(NAME) $(PUSH_SWAP_LIB_PATH)
-# @cd $(TEST_PATH)$(SHELL_SCRIPTS_PATH) && sh test_inputs.sh
 	@echo "$(YELLOW)input: \"$(STR_ARGS)\", expected: Error$(RED)"
 	@sleep 2
 	@./$(NAME) $(STR_ARGS)

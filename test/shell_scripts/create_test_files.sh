@@ -33,8 +33,6 @@ SUPER_MAGENTA="\033[95m"
 SUPER_CYAN="\033[96m"
 # colors
 
-RANDOM_SEQ_500=$(seq -5000 5000 | shuf -n 500)
-
 # Checks and creates directory
 test $TEST_OUTPUT_FILES | mkdir $TEST_OUTPUT_FILES
 test $TEST_ERROR_FILES | mkdir $TEST_ERROR_FILES
@@ -57,6 +55,12 @@ for i in $(seq 1 100); do
 	RANDOM_SEQ_100=$(seq -5000 5000 | shuf -n 100)
 	echo "$RANDOM_SEQ_100" > $TEST_SEQUENCES$TEST_100$FILE_NAME_100_SEQUENCE$i$FILE_END;
 	../../$PROGRAM_NAME $RANDOM_SEQ_100 > $TEST_OUTPUT_FILES$TEST_100$FILE_NAME_100_OUTPUT$i$FILE_NAME_END 2>$TEST_ERROR_FILES$TEST_100$FILE_NAME_100_ERROR$i$FILE_NAME_END;
+	result=$(../../$PROGRAM_NAME $RANDOM_SEQ_100 | ./../../checker_linux $RANDOM_SEQ_100);
+	if [ "$result" = "OK" ]; then
+		echo "Test_100: $iº$GREEN OK$WHITE";
+	else
+		echo "Test_100: $iº$RED KO$WHITE";
+	fi;
 done
 
 # This block of code tests if there is some error log written in the error files, if not it delete the file, else keeps it.
@@ -77,15 +81,23 @@ if [ "$(find $TEST_ERROR_FILES$TEST_100 -type f -name ".txt" | wc -l )" -gt "0" 
 else
 	echo "$SUPER_GREEN Really good, $ERROR_FILES_100_AMOUNT errors$WHITE";
 fi;
-echo "$YELLOW Testing 100 times with 500 random numbers$WHITE"
+echo "$YELLOW Testing 15 times with 500 random numbers$WHITE"
 echo "$SUPER_RED Be patient it takes some time$WHITE"
 
 # Generates numbers between -5000 and 5000 and shuffles it and select 500 numbers from it,
 # then redirect this sequence to a file called test_500_sequence(number).txt, the number in the
 # file name means really which file it is, if is 1 it means first, 2 is second, and so on.
 # It also takes in each iteration and redirect each sequence to the test_500_numbers_output(number).txt
-for i in $(seq 1 100); do
+for i in $(seq 1 15); do
+	RANDOM_SEQ_500=$(seq -5000 5000 | shuf -n 500)
+	echo "$RANDOM_SEQ_500" > $TEST_SEQUENCES$TEST_500$FILE_NAME_500_SEQUENCE$i$FILE_END;
 	../../$PROGRAM_NAME $RANDOM_SEQ_500 > $TEST_OUTPUT_FILES$TEST_500$FILE_NAME_500_OUTPUT$i$FILE_NAME_END 2>$TEST_ERROR_FILES$TEST_500$FILE_NAME_500_ERROR$i$FILE_NAME_END;
+	result=$(../../$PROGRAM_NAME $RANDOM_SEQ_500 | ./../../checker_linux $RANDOM_SEQ_500);
+	if [ "$result" = "OK" ]; then
+		echo "Test_500: $iº$GREEN OK$WHITE";
+	else
+		echo "Test_500: $iº$RED KO$WHITE";
+	fi;
 done
 
 # This block of code tests if there is some error log written in the error files, if not it delete the file, else keeps it.
