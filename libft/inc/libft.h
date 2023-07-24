@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 00:38:40 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/13 13:49:44 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/24 15:12:57 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,15 @@ void		ft_lstclear(t_list **lst, void (*del)(void *));
 void		ft_lstiter(t_list *lst, void (*f)(void *));
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
-// extras
 
+//extras
+
+#include "ft_printf.h"
+char		*get_next_line(int fd);
+char		*update_buffer(char *buffer, int fd);
+char		*get_one_line(char *buffer);
+char		*update_new_buffer(char *buffer);
 int			ft_isspace(int c);
 long long	ft_atoll(const char *str);
 int			ft_abs_value(int nbr);
-
 #endif

@@ -113,7 +113,7 @@ done
 
 # This block of code checks whether there is or not at least on error file in the error directory.
 # This is for the 500 files.
-if [ "$(find $TEST_ERROR_FILES$TEST_500 -type f  -name ".txt" | wc -l )" -gt "0" ]; then
+if [ "$(find $TEST_ERROR_FILES$TEST_500 -type f -name ".txt" | wc -l )" -gt "0" ]; then
 	echo "$SUPER_RED Something went wrong, check $TEST_ERROR_FILES$TEST_500 $ERROR_FILES_500_AMOUNT errors :($WHITE";
 else
 	echo "$SUPER_GREEN Really good, $ERROR_FILES_500_AMOUNT errors$WHITE";
