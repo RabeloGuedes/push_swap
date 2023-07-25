@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 07:51:42 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/18 11:17:29 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/24 16:17:59 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ void	ss(t_list **head_a, t_list **head_b, char swap_type)
 {
 	swap(head_a, swap_type);
 	swap(head_b, swap_type);
-	ft_printf("ss\n");
+	if (swap_type == 's')
+		ft_printf("ss\n");
 }

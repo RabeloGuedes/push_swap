@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 17:14:06 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/18 11:15:39 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/25 11:43:16 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	rotate(t_list **head, char rotate_type)
 	temp->next = NULL;
 	if (rotate_type == 'a')
 		ft_printf("ra\n");
-	if (rotate_type == 'b')
+	else if (rotate_type == 'b')
 		ft_printf("rb\n");
 }
 
@@ -42,7 +42,8 @@ void	rr(t_list **head_a, t_list **head_b, char rotate_type)
 {
 	rotate(head_a, rotate_type);
 	rotate(head_b, rotate_type);
-	ft_printf("rr\n");
+	if (rotate_type == 'r')
+		ft_printf("rr\n");
 }
 
 // This function reverse rotates the given stack,
@@ -79,5 +80,6 @@ void	rrr(t_list **head_a, t_list **head_b, char rr_type)
 {
 	reverse_rotate(head_a, rr_type);
 	reverse_rotate(head_b, rr_type);
-	ft_printf("rrr\n");
+	if (rr_type == 'r')
+		ft_printf("rrr\n");
 }

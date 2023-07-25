@@ -6,11 +6,11 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 13:54:34 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/24 14:56:00 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/25 12:41:25 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/get_next_line.h"
+#include "../../inc/libft.h"
 
 char	*get_next_line(int fd)
 {
@@ -46,7 +46,7 @@ char	*update_buffer(char *buffer, int fd)
 			return (NULL);
 		}
 		temp[r_status] = '\0';
-		buffer = ft_strjoin(buffer, temp);
+		buffer = ft_special_strjoin(buffer, temp);
 	}
 	free(temp);
 	return (buffer);
