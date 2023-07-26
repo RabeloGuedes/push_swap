@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 12:43:35 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/19 16:21:40 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/26 14:21:17 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,15 @@ void	sort_in_descendig_to_b(t_list **head_a, t_list **head_b)
 		cheapest = find_cheapest(*head_b, *head_a, 'd');
 		origin_rotations = rotations_to_top(*head_a, cheapest);
 		dest_rotations = right_position_at_dest(cheapest, *head_b, 'd');
+		// ft_printf("===========================================================================\n");
+		// ft_printf("Cheapest: %i\n", *(int *)cheapest->content);
+		// ft_printf("Origin Rotations: %i\n", origin_rotations);
+		// ft_printf("Dest Rotations: %i\n", dest_rotations);
+		// ft_printf("Stack Before A:\n");
+		// display_nodes_simple(*head_a);
+		// ft_printf("Stack Before B:\n");
+		// display_nodes_simple(*head_b);
+		// ft_printf("===========================================================================\n");
 		if (origin_rotations > 0 && dest_rotations > 0)
 			handle_rotation_a(head_a, head_b, 'd');
 		else if (origin_rotations < 0 && dest_rotations < 0)
@@ -77,6 +86,11 @@ void	sort_in_descendig_to_b(t_list **head_a, t_list **head_b)
 		else
 			handle_exotic_rotation_a(head_a, head_b, 'd');
 		push(head_b, head_a, 'b');
+		// ft_printf("Stack After A:\n");
+		// display_nodes_simple(*head_a);
+		// ft_printf("Stack After B:\n");
+		// display_nodes_simple(*head_b);
+		// ft_printf("===========================================================================\n");
 	}
 }
 

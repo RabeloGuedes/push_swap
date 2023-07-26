@@ -8,6 +8,8 @@ FLAGS = -Wall -Wextra -Werror
 SANITIZE_FLAG = -fsanitize=address
 DEBUG_FLAGS = -g3 $(SANITIZE_FLAG)
 SRC_PATH = src/
+CHECKER_PATH = $(SRC_PATH)checker/
+CHECKER_NAME = checker
 TEST_PATH = test/
 TEST_OUTPUT_FILES = test_output_files/
 TEST_ERROR_FILES = test_error_files/
@@ -85,11 +87,15 @@ $(notdir $(OBJS)): $(HELPERS) $(MOVEMENTS) $(TESTS)
 
 clean:
 	@make -s clean --directory=$(LIBFT_PATH)
-	@rm -f $(notdir $(OBJS)) tester
+	@rm -f $(notdir $(OBJS)) $(CHECKER_NAME)
 
 fclean: clean
 	@make -s fclean --directory=$(LIBFT_PATH)
 	@rm -rf $(PUSH_SWAP_LIB) $(NAME) $(NAME).dSYM $(TEST_PATH)$(TEST_OUTPUT_FILES) $(TEST_PATH)$(TEST_ERROR_FILES) $(TEST_PATH)$(TEST_SEQUENCE)
+
+bonus: $(notdir $(OBJS))
+	@ar rc $(PUSH_SWAP_LIB) $(notdir $(OBJS))
+	@$(CC) $(FLAGS) $(INC_FLAG) $(CHECKER_PATH)$(CHECKER_NAME).c -o $(CHECKER_NAME) $(PUSH_SWAP_LIB_PATH)
 
 debug: fclean $(notdir $(OBJS))
 	@ar rc $(PUSH_SWAP_LIB) $(notdir $(OBJS))
@@ -130,9 +136,10 @@ test_input: $(notdir $(OBJS))
 	@sleep 2
 	@./$(NAME) $(GOOD_MIX_ARGS)
 
-test_files_lines: fclean $(notdir $(OBJS))
+create_tests: fclean $(notdir $(OBJS))
 	@ar rc $(PUSH_SWAP_LIB) $(notdir $(OBJS))
 	@$(CC) $(FLAGS) $(DEBUG_FLAGS) $(INC_FLAG) $(SRC_PATH)$(NAME).c -o $(NAME) $(PUSH_SWAP_LIB_PATH)
+	@$(CC) $(FLAGS) $(INC_FLAG) $(CHECKER_PATH)$(CHECKER_NAME).c -o $(CHECKER_NAME) $(PUSH_SWAP_LIB_PATH)
 	@cd $(TEST_PATH)$(SHELL_SCRIPTS_PATH) && sh create_test_files.sh
 
 test_100:
@@ -141,6 +148,6 @@ test_100:
 test_500:
 	@cd $(TEST_PATH)$(SHELL_SCRIPTS_PATH) && sh test_output_500_random_numbers.sh
 
-tests: test_files_lines test_100 test_500
+tests: create_tests test_100 test_500
 
 re: fclean all

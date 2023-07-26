@@ -55,7 +55,7 @@ for i in $(seq 1 100); do
 	RANDOM_SEQ_100=$(seq -5000 5000 | shuf -n 100)
 	echo "$RANDOM_SEQ_100" > $TEST_SEQUENCES$TEST_100$FILE_NAME_100_SEQUENCE$i$FILE_END;
 	../../$PROGRAM_NAME $RANDOM_SEQ_100 > $TEST_OUTPUT_FILES$TEST_100$FILE_NAME_100_OUTPUT$i$FILE_NAME_END 2>$TEST_ERROR_FILES$TEST_100$FILE_NAME_100_ERROR$i$FILE_NAME_END;
-	result=$(../../$PROGRAM_NAME $RANDOM_SEQ_100 | ./../../checker_linux $RANDOM_SEQ_100);
+	result=$(../../$PROGRAM_NAME $RANDOM_SEQ_100 | ./../../checker $RANDOM_SEQ_100);
 	if [ "$result" = "OK" ]; then
 		echo "Test_100: $iº$GREEN OK$WHITE";
 	else
@@ -92,7 +92,7 @@ for i in $(seq 1 15); do
 	RANDOM_SEQ_500=$(seq -5000 5000 | shuf -n 500)
 	echo "$RANDOM_SEQ_500" > $TEST_SEQUENCES$TEST_500$FILE_NAME_500_SEQUENCE$i$FILE_END;
 	../../$PROGRAM_NAME $RANDOM_SEQ_500 > $TEST_OUTPUT_FILES$TEST_500$FILE_NAME_500_OUTPUT$i$FILE_NAME_END 2>$TEST_ERROR_FILES$TEST_500$FILE_NAME_500_ERROR$i$FILE_NAME_END;
-	result=$(../../$PROGRAM_NAME $RANDOM_SEQ_500 | ./../../checker_linux $RANDOM_SEQ_500);
+	result=$(../../$PROGRAM_NAME $RANDOM_SEQ_500 | ./../../checker $RANDOM_SEQ_500);
 	if [ "$result" = "OK" ]; then
 		echo "Test_500: $iº$GREEN OK$WHITE";
 	else
@@ -102,7 +102,7 @@ done
 
 # This block of code tests if there is some error log written in the error files, if not it delete the file, else keeps it.
 # This is for the 500 files.
-for i in $(seq 1 100); do
+for i in $(seq 1 15); do
 	LINES=$(wc -l < "$TEST_ERROR_FILES$TEST_500$FILE_NAME_500_ERROR$i$FILE_NAME_END");
 	if [ "$LINES" -eq 0 ]; then
 		rm "$TEST_ERROR_FILES$TEST_500$FILE_NAME_500_ERROR$i$FILE_NAME_END";

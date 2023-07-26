@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 15:11:35 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/19 16:19:29 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/26 14:20:56 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,10 @@ void	push_swap(char **av)
 	*head_b = NULL;
 	if (size_checker(head_a) && !is_ordered(*head_a, &is_ascending))
 		handle_movement(head_a, head_b);
+	// ft_printf("Stack A:\n");
+	// display_nodes_simple(*head_a);
+	// ft_printf("Stack B:\n");
+	// display_nodes_simple(*head_b);
 	free_nodes(*head_a);
 	free_nodes(*head_b);
 	free(head_a);

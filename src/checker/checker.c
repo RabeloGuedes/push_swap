@@ -6,11 +6,11 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 15:48:10 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/25 12:49:57 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/26 14:22:35 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "../../inc/push_swap.h"
 
 void	apply_swap(char *str, t_list **head_a, t_list **head_b, char swap_type)
 {
@@ -90,12 +90,8 @@ int	main(int ac, char **av)
 		}
 		if (!ft_lstsize(*head_b) && is_ordered(*head_a, &is_ascending))
 			ft_printf("OK\n");
-		else if (ft_lstsize(*head_b) && !is_ordered(*head_a, &is_ascending))
+		else
 			ft_printf("KO\n");
-		ft_printf("Stack A:\n");
-		display_nodes_simple(*head_a);
-		ft_printf("Stack B:\n");
-		display_nodes_simple(*head_b);
 		free_nodes(*head_a);
 		free_nodes(*head_b);
 		free(head_a);
