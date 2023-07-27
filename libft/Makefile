@@ -8,6 +8,7 @@ LISTS_PATH = src/lists/
 MEMORY_PATH = src/memory/
 PRINTF_PATH = src/printf/
 STRINGS_PATH = src/strings/
+GNL_PATH = src/gnl/
 
 STRINGS =	$(STRINGS_PATH)ft_putendl_fd.c $(STRINGS_PATH)ft_putnbr_fd.c\
 			$(STRINGS_PATH)ft_putstr_fd.c $(STRINGS_PATH)ft_split.c\
@@ -23,7 +24,8 @@ CHAR =		$(CHAR_PATH)ft_isalnum.c $(CHAR_PATH)ft_isalpha.c $(CHAR_PATH)ft_isascii
 			$(CHAR_PATH)ft_isdigit.c $(CHAR_PATH)ft_isprint.c $(CHAR_PATH)ft_putchar_fd.c\
 			$(CHAR_PATH)ft_tolower.c $(CHAR_PATH)ft_toupper.c $(CHAR_PATH)ft_isspace.c
 
-CONVERTER = $(CONVERTER_PATH)ft_atoi.c $(CONVERTER_PATH)ft_itoa.c $(CONVERTER_PATH)ft_atoll.c
+CONVERTER = $(CONVERTER_PATH)ft_atoi.c $(CONVERTER_PATH)ft_itoa.c $(CONVERTER_PATH)ft_atoll.c\
+			$(CONVERTER_PATH)ft_abs_value.c
 
 LISTS =		$(LISTS_PATH)ft_lstadd_back.c $(LISTS_PATH)ft_lstadd_front.c\
 			$(LISTS_PATH)ft_lstclear.c $(LISTS_PATH)ft_lstdelone.c $(LISTS_PATH)ft_lstiter.c\
@@ -38,8 +40,10 @@ PRINTF =	$(PRINTF_PATH)ft_format_checker.c $(PRINTF_PATH)ft_print_address.c $(PR
 			$(PRINTF_PATH)ft_print_int.c $(PRINTF_PATH)ft_print_strchr.c $(PRINTF_PATH)ft_print_uint.c\
 			$(PRINTF_PATH)ft_printf.c
 
+GNL = 		$(GNL_PATH)get_next_line.c $(GNL_PATH)get_next_line_utils.c
+
 SRC_FILES = $(STRINGS) $(CHAR) $(CONVERTER) $(LISTS)\
-			$(MEMORY) $(PRINTF)
+			$(MEMORY) $(PRINTF) $(GNL)
 
 OBJS_FILES = $(SRC_FILES:.c=.o)
 

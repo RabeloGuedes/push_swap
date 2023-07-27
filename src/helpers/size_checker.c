@@ -1,16 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspace.c                                       :+:      :+:    :+:   */
+/*   size_checker.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/04 14:32:55 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/24 13:18:54 by arabelo-         ###   ########.fr       */
+/*   Created: 2023/07/10 14:33:08 by arabelo-          #+#    #+#             */
+/*   Updated: 2023/07/18 11:03:37 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isspace(int c)
+#include "../../inc/push_swap.h"
+
+// This function checks if the stack has more
+// the one node.
+int	size_checker(t_list **head)
 {
-	return ((c >= '\t' && c <= '\r') || c == ' ');
+	int	size;
+
+	if (!head || !*head)
+		return (0);
+	size = ft_lstsize(*head);
+	if (size > 1)
+		return (1);
+	return (0);
 }

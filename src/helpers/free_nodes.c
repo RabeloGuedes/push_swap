@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   int_checker.c                                      :+:      :+:    :+:   */
+/*   free_nodes.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/02 20:31:28 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/05 13:52:46 by arabelo-         ###   ########.fr       */
+/*   Created: 2023/07/07 11:26:58 by arabelo-          #+#    #+#             */
+/*   Updated: 2023/07/18 10:37:06 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-int	int_checker(const char *str)
+// This function iterate over the stack
+// from a certain node, assuming it is
+// the head, and frees the content of
+// each node as well as the node itself.
+void	free_nodes(t_list *head)
 {
-	long long	nbr;
-	int			i;
+	t_list	*curr;
 
-	i = 0;
-	while (str[i])
+	curr = head;
+	while (curr)
 	{
-		while (ft_isspace(str[i]))
-			i++;
-		nbr = ft_atoll(&str[i]);
-		if (nbr < INT32_MIN || nbr > INT32_MAX)
-			return (0);
-		while (str[i] && !ft_isspace(str[i]))
-			i++;
+		curr = curr->next;
+		free(head->content);
+		free(head);
+		head = curr;
 	}
-	while (*str)
-	{
-		if (!ft_isdigit(*str) && !ft_isspace(*str)
-			&& *str != '\0' && *str != '-')
-			return (0);
-		str++;
-	}
-	return (1);
 }

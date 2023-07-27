@@ -1,16 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspace.c                                       :+:      :+:    :+:   */
+/*   ft_abs_value.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/04 14:32:55 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/24 13:18:54 by arabelo-         ###   ########.fr       */
+/*   Created: 2023/07/13 13:47:37 by arabelo-          #+#    #+#             */
+/*   Updated: 2023/07/24 15:12:18 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isspace(int c)
+#include "../../inc/libft.h"
+
+int	ft_abs_value(int nbr)
 {
-	return ((c >= '\t' && c <= '\r') || c == ' ');
+	if (nbr < 0)
+		return (-nbr);
+	return (nbr);
 }
