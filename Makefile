@@ -93,7 +93,9 @@ fclean: clean
 	@make -s fclean --directory=$(LIBFT_PATH)
 	@rm -rf $(PUSH_SWAP_LIB) $(NAME) $(NAME).dSYM $(TEST_PATH)$(TEST_OUTPUT_FILES) $(TEST_PATH)$(TEST_ERROR_FILES) $(TEST_PATH)$(TEST_SEQUENCE)
 
-bonus: $(notdir $(OBJS))
+bonus: $(notdir $(OBJS)) checker
+
+checker:
 	@ar rc $(PUSH_SWAP_LIB) $(notdir $(OBJS))
 	@$(CC) $(FLAGS) $(INC_FLAG) $(CHECKER_PATH)$(CHECKER_NAME).c -o $(CHECKER_NAME) $(PUSH_SWAP_LIB_PATH)
 

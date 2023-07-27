@@ -41,16 +41,16 @@ echo "$YELLOW=========================================RESULT====================
 
 # It shows the max number of lines, i.e. from the file with most lines.
 if [ "$MAX_LINES" -gt "5500" ];
-	then echo "$YELLOW|$WHITE         The file with the most lines has: $SUPER_RED$MAX_LINES$WHITE lines                            $YELLOW|$WHITE";
+	then echo "$YELLOW|$WHITE         The file with the most lines has: $SUPER_RED$MAX_LINES$WHITE lines                        $YELLOW|$WHITE";
 else
-	echo "$YELLOW|$WHITE         The file with the most lines has: $SUPER_GREEN$MAX_LINES$WHITE lines                            $YELLOW|$WHITE";
+	echo "$YELLOW|$WHITE         The file with the most lines has: $SUPER_GREEN$MAX_LINES$WHITE lines                        $YELLOW|$WHITE";
 fi;
 
 # It shows the min number of lines, i.e. from the file with least lines.
 if [ "$MIN_LINES" -gt "5500" ];
-	then echo "$YELLOW|$WHITE         The file with the least has: $SUPER_RED$MIN_LINES$WHITE lines                                 $YELLOW|$WHITE";
+	then echo "$YELLOW|$WHITE         The file with the least has: $SUPER_RED$MIN_LINES$WHITE lines                             $YELLOW|$WHITE";
 else
-	echo "$YELLOW|$WHITE         The file with the least lines has: $SUPER_GREEN$MIN_LINES$WHITE lines                           $YELLOW|$WHITE";
+	echo "$YELLOW|$WHITE         The file with the least lines has: $SUPER_GREEN$MIN_LINES$WHITE lines                       $YELLOW|$WHITE";
 fi;
 
 echo "$YELLOW|$WHITE$MAGENTA         Total lines in all files: $TOTAL_LINES$WHITE                                         $YELLOW|$WHITE"
