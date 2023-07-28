@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 18:17:56 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/20 10:18:51 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/07/28 11:58:40 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	handle_rotation_b(t_list **head_origin,
 			position_type);
 	while (origin_rotations && dest_rotations)
 	{
-		rr(head_origin, head_dest, '2');
+		rr(head_origin, head_dest, 'r');
 		origin_rotations--;
 		dest_rotations--;
 	}
@@ -62,7 +62,7 @@ void	handle_reverse_rotation_b(t_list **head_origin,
 			position_type);
 	while (origin_rotations && dest_rotations)
 	{
-		rrr(head_origin, head_dest, '2');
+		rrr(head_origin, head_dest, 'r');
 		origin_rotations++;
 		dest_rotations++;
 	}
