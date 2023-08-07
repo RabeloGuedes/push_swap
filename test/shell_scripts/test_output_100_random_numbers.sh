@@ -41,19 +41,19 @@ echo "$YELLOW=========================================RESULT====================
 
 # It shows the max number of lines, i.e. from the file with most lines.
 if [ "$MAX_LINES" -gt "700" ];
-	then echo "$YELLOW|$WHITE 		The file with the most lines has: $SUPER_RED$MAX_LINES$WHITE lines                  $YELLOW|$WHITE";
+	then echo "$WHITE 		The file with the most lines has: $SUPER_RED$MAX_LINES$WHITE lines                  $WHITE";
 else
-	echo "$YELLOW|$WHITE 		The file with the most lines has: $SUPER_GREEN$MAX_LINES$WHITE lines                  $YELLOW|$WHITE ";
+	echo "$WHITE 		The file with the most lines has: $SUPER_GREEN$MAX_LINES$WHITE lines                  $WHITE ";
 fi;
 
 # It shows the min number of lines, i.e. from the file with least lines.
 if [ "$MIN_LINES" -gt "700" ];
-	then echo "$YELLOW|$WHITE 		The file with the least lines has: $SUPER_RED$MIN_LINES$WHITE lines                 $YELLOW|$WHITE ";
+	then echo "$WHITE 		The file with the least lines has: $SUPER_RED$MIN_LINES$WHITE lines                 $WHITE ";
 else
-	echo "$YELLOW|$WHITE 		The file with the least lines has: $SUPER_GREEN$MIN_LINES$WHITE lines                 $YELLOW|$WHITE ";
+	echo "$WHITE 		The file with the least lines has: $SUPER_GREEN$MIN_LINES$WHITE lines                 $WHITE ";
 fi;
 
-echo "$YELLOW|$WHITE$MAGENTA 		Total lines in all files: $TOTAL_LINES$WHITE     	       			  $YELLOW|$WHITE"
-echo "$YELLOW|$WHITE$BLUE 		The average lines per file is: $(($TOTAL_LINES / 100))$WHITE          	 	          $YELLOW|$WHITE "
+echo "$WHITE$MAGENTA 		Total lines in all files: $TOTAL_LINES$WHITE     	       			  $WHITE"
+echo "$WHITE$BLUE 		The average lines per file is: $(($TOTAL_LINES / 100))$WHITE          	 	          $WHITE "
 
 echo "$YELLOW=========================================RESULT====================================$YELLOW$WHITE"

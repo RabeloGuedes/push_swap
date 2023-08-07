@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 20:32:58 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/19 15:07:11 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/08/07 14:33:47 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,6 @@
 # define PUSH_SWAP_H
 
 # include "../libft/inc/ft_printf.h"
-
-typedef struct s_node_infos
-{
-	t_list	*address;
-	char	rotate_mode;
-	int		qtd_movements;
-}				t_node_info;
 
 // helpers
 
@@ -46,21 +39,21 @@ void		handle_rotation_a(t_list **head_origin,
 				t_list **head_dest, char position_type);
 void		handle_reverse_rotation_a(t_list **head_origin,
 				t_list **head_dest, char position_type);
-void		exotic_rotation_a_1(t_list **head_origin, t_list **head_dest,
+void		opposite_direction_a_1(t_list **head_origin, t_list **head_dest,
 				int	*origin_rotations, int *dest_rotations);
-void		exotic_rotation_a_2(t_list **head_origin, t_list **head_dest,
+void		opposite_direction_a_2(t_list **head_origin, t_list **head_dest,
 				int	*origin_rotations, int *dest_rotations);
-void		handle_exotic_rotation_a(t_list **head_origin,
+void		handle_opposite_direction_a(t_list **head_origin,
 				t_list **head_dest, char position_type);
 void		handle_rotation_b(t_list **head_origin,
 				t_list **head_dest, char position_type);
 void		handle_reverse_rotation_b(t_list **head_origin,
 				t_list **head_dest, char position_type);
-void		exotic_rotation_b_2(t_list **head_origin, t_list **head_dest,
+void		opposite_direction_b_2(t_list **head_origin, t_list **head_dest,
 				int	*origin_rotations, int *dest_rotations);
-void		exotic_rotation_b_1(t_list **head_origin, t_list **head_dest,
+void		opposite_direction_b_1(t_list **head_origin, t_list **head_dest,
 				int	*origin_rotations, int *dest_rotations);
-void		handle_exotic_rotation_b(t_list **head_origin,
+void		handle_opposite_direction_b(t_list **head_origin,
 				t_list **head_dest, char position_type);
 void		handle_up_to_3(t_list **head);
 void		sort_bigger_stack(t_list **head_a, t_list **head_b);
@@ -93,12 +86,22 @@ void		push_swap(char **av);
 void		handle_up_to_3(t_list **head);
 void		handle_movement(t_list **head_a, t_list **head_b);
 
-// tests
+// bonus
 
-void		display_node_infos(t_list *node);
-void		display_nodes(t_list *stack);
-void		display_nodes_simple(t_list *stack);
+void		apply_swap(char *str, t_list **head_a,
+				t_list **head_b, char swap_type);
+void		apply_push(char *str, t_list **head_a,
+				t_list **head_b, char push_type);
+void		apply_rotate(char *str, t_list **head_a,
+				t_list **head_b, char rotate_type);
+void		movement_applier(char *str, t_list **head_a, t_list **head_b);
+void		read_commands_check_order(t_list **head_a, t_list **head_b);
+int			is_swap(char *str);
+int			is_rotation(char *str);
+int			is_reverse_rotation(char *str);
+int			is_push(char *str);
+int			movement_checker(char *str);
 
-// tests
+// bonus
 
 #endif

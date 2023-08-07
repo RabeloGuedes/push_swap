@@ -39,6 +39,8 @@ MOVEMENTS = $(SRC_PATH)$(MOVEMENTS_PATH)swap.c\
 			$(SRC_PATH)$(MOVEMENTS_PATH)push.c\
 			$(SRC_PATH)$(MOVEMENTS_PATH)rotate.c
 
+CHECKER =	$(CHECKER_PATH)checker_utils.c $(CHECKER_PATH)movement_validation.c
+
 TESTS = $(TEST_PATH)display_nodes.c
 
 OBJS = $(HELPERS:.c=.o) $(MOVEMENTS:.c=.o) $(TESTS:.c=.o)
@@ -73,31 +75,48 @@ POSITVES_ARGS = 5 7 1 8 3
 GOOD_MIX_ARGS = $(POSITVES_ARGS) $(NEGATIVES_ARGS)
 # Test Variables
 
+
 all: $(NAME)
 
 $(NAME): $(notdir $(OBJS))
+	@echo "$(SUPER_YELLOW)Creating library!$(WHITE)"
 	@ar rc $(PUSH_SWAP_LIB) $(notdir $(OBJS))
+	@echo "$(GREEN)Library successfully created!$(WHITE)"
+	@echo "$(SUPER_YELLOW)Compiling $(SUPER_MAGENTA)$(NAME)$(SUPER_YELLOW)!$(WHITE)"
 	@$(CC) $(FLAGS) $(INC_FLAG) $(SRC_PATH)$(NAME).c -o $(NAME) $(PUSH_SWAP_LIB_PATH)
+	@echo "$(SUPER_MAGENTA)$(NAME)$(GREEN) successfully compiled!$(WHITE)"
 
 $(notdir $(OBJS)): $(HELPERS) $(MOVEMENTS) $(TESTS)
+	@echo "$(YELLOW)Compiling $(CYAN)libft$(YELLOW)!$(WHITE)"
 	@make -s --directory=$(LIBFT_PATH)
+	@echo "$(YELLOW)Compiling $(MAGENTA)OBJS FILES$(YELLOW)!$(WHITE)"
 	@cp $(LIBFT_PATH)$(LIBFT) ./
 	@mv $(LIBFT) $(PUSH_SWAP_LIB)
 	@$(CC) -c $(FLAGS) $(INC_FLAG) $(HELPERS) $(MOVEMENTS) $(TESTS)
+	@echo "$(GREEN)Compilation done!$(WHITE)"
 
 clean:
 	@make -s clean --directory=$(LIBFT_PATH)
-	@rm -f $(notdir $(OBJS)) $(CHECKER_NAME)
+	@rm -f $(notdir $(OBJS)) $(CHECKER_NAME) $(notdir $(CHECKER:.c=.o))
+	@echo "$(RED)OBJS FILES removed!$(WHITE)"
 
 fclean: clean
 	@make -s fclean --directory=$(LIBFT_PATH)
 	@rm -rf $(PUSH_SWAP_LIB) $(NAME) $(NAME).dSYM $(TEST_PATH)$(TEST_OUTPUT_FILES) $(TEST_PATH)$(TEST_ERROR_FILES) $(TEST_PATH)$(TEST_SEQUENCE)
+	@echo "$(SUPER_RED)$(NAME), $(CHECKER_NAME) and $(PUSH_SWAP_LIB) removed!$(WHITE)"
 
-bonus: $(notdir $(OBJS)) checker
+re: fclean all
+
+bonus: $(notdir $(OBJS)) checker $(notdir $(CHECKER:.c=.o))
 
 checker:
-	@ar rc $(PUSH_SWAP_LIB) $(notdir $(OBJS))
+	@$(CC) -c $(FLAGS) $(INC_FLAG) $(CHECKER)
+	@echo "$(SUPER_YELLOW)Creating library!$(WHITE)"
+	@ar rc $(PUSH_SWAP_LIB) $(notdir $(OBJS)) $(notdir $(CHECKER:.c=.o))
+	@echo "$(GREEN)Library successfully created!$(WHITE)"
+	@echo "$(SUPER_YELLOW)Compiling $(SUPER_MAGENTA)$(CHECKER_NAME)$(SUPER_YELLOW)!$(WHITE)"
 	@$(CC) $(FLAGS) $(INC_FLAG) $(CHECKER_PATH)$(CHECKER_NAME).c -o $(CHECKER_NAME) $(PUSH_SWAP_LIB_PATH)
+	@echo "$(SUPER_MAGENTA)$(CHECKER_NAME)$(GREEN) successfully compiled!$(WHITE)"
 
 debug: fclean $(notdir $(OBJS))
 	@ar rc $(PUSH_SWAP_LIB) $(notdir $(OBJS))
@@ -151,5 +170,3 @@ test_500:
 	@cd $(TEST_PATH)$(SHELL_SCRIPTS_PATH) && sh test_output_500_random_numbers.sh
 
 tests: create_tests test_100 test_500
-
-re: fclean all

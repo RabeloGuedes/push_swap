@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 20:31:28 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/18 10:58:03 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/08/07 14:21:59 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	are_arg_num(const char *str)
 {
 	if (*str == '+' || *str == '-')
 		str++;
+	if (!*str)
+		return (0);
 	while (*str)
 	{
 		if (*str && !ft_isdigit(*str))

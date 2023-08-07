@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 00:38:40 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/25 12:41:03 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/08/07 15:21:56 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,15 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include "ft_printf.h"
+
+# ifndef GET_NEXT_LINE_H
+#  define GET_NEXT_LINE_H
+
+#  ifndef BUFFER_SIZE
+#   define BUFFER_SIZE 1
+#  endif
+# endif
 
 # ifndef INT32_MAX
 #  define INT32_MAX 2147483647
@@ -82,17 +91,7 @@ void		ft_lstclear(t_list **lst, void (*del)(void *));
 void		ft_lstiter(t_list *lst, void (*f)(void *));
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
-
 //extras
-
-# include "ft_printf.h"
-
-# ifndef GET_NEXT_LINE_H
-#  define GET_NEXT_LINE_H
-
-#  ifndef BUFFER_SIZE
-#   define BUFFER_SIZE 1
-#  endif
 
 char		*get_next_line(int fd);
 char		*update_buffer(char *buffer, int fd);
@@ -102,7 +101,5 @@ int			ft_isspace(int c);
 long long	ft_atoll(const char *str);
 int			ft_abs_value(int nbr);
 char		*ft_special_strjoin(char *s1, char *s2);
-
-# endif
 
 #endif

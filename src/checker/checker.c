@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bonus.c                                            :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 15:48:10 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/07/27 14:02:20 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/08/07 15:23:55 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,14 @@ void	apply_swap(char *str, t_list **head_a, t_list **head_b, char swap_type)
 
 void	apply_push(char *str, t_list **head_a, t_list **head_b, char push_type)
 {
-	if (str[1] == 'a')	
+	if (str[1] == 'a')
 		push(head_a, head_b, push_type);
 	else if (str[1] == 'b')
 		push(head_b, head_a, push_type);
 }
 
-void	apply_rotate(char *str, t_list **head_a, t_list **head_b, char rotate_type)
+void	apply_rotate(char *str, t_list **head_a,
+	t_list **head_b, char rotate_type)
 {
 	if (ft_strlen(str) == 3 && str[0] == 'r')
 	{
@@ -64,7 +65,6 @@ void	movement_applier(char *str, t_list **head_a, t_list **head_b)
 
 int	main(int ac, char **av)
 {
-	char	*line;
 	t_list	**head_a;
 	t_list	**head_b;
 
@@ -80,18 +80,7 @@ int	main(int ac, char **av)
 		*head_b = NULL;
 		if (!*head_a)
 			return (0);
-		while (1)
-		{
-			line = get_next_line(0);
-			if (!line)
-				break ;
-			movement_applier(line, head_a, head_b);
-			free(line);
-		}
-		if (!ft_lstsize(*head_b) && is_ordered(*head_a, &is_ascending))
-			ft_printf("OK\n");
-		else
-			ft_printf("KO\n");
+		read_commands_check_order(head_a, head_b);
 		free_nodes(*head_a);
 		free_nodes(*head_b);
 		free(head_a);
