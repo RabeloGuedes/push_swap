@@ -157,8 +157,8 @@ test_input: $(notdir $(OBJS))
 	@sleep 2
 	@./$(NAME) $(GOOD_MIX_ARGS)
 
-create_tests: fclean $(notdir $(OBJS))
-	@ar rc $(PUSH_SWAP_LIB) $(notdir $(OBJS))
+create_tests: fclean bonus
+	@ar rc $(PUSH_SWAP_LIB) $(notdir $(OBJS)) $(notdir $(CHECKER:.c=.o))
 	@$(CC) $(FLAGS) $(DEBUG_FLAGS) $(INC_FLAG) $(SRC_PATH)$(NAME).c -o $(NAME) $(PUSH_SWAP_LIB_PATH)
 	@$(CC) $(FLAGS) $(INC_FLAG) $(CHECKER_PATH)$(CHECKER_NAME).c -o $(CHECKER_NAME) $(PUSH_SWAP_LIB_PATH)
 	@cd $(TEST_PATH)$(SHELL_SCRIPTS_PATH) && sh create_test_files.sh
