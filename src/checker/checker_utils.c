@@ -6,7 +6,7 @@
 /*   By: arabelo- <arabelo-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 16:08:48 by arabelo-          #+#    #+#             */
-/*   Updated: 2023/08/07 14:19:04 by arabelo-         ###   ########.fr       */
+/*   Updated: 2023/08/09 14:09:16 by arabelo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,16 @@ void	read_commands_check_order(t_list **head_a, t_list **head_b)
 	while (1)
 	{
 		line = get_next_line(0);
-		if (!line || !movement_checker(line))
+		if (!line)
 		{
 			free(line);
 			break ;
+		}
+		if (!movement_checker(line))
+		{
+			free(line);
+			ft_putendl_fd("Error", 2);
+			return ;
 		}
 		movement_applier(line, head_a, head_b);
 		free(line);
